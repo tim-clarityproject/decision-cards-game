@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - <%= card.title %></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #2ecc71;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            color: #999;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .results-header {
+            font-size: 0.95em;
+            color: #999;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .results-content {
+            background: #f9f9f9;
+            border-left: 4px solid #2ecc71;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .section p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .navigation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-btn {
+            padding: 12px;
+            background: #f0f0f0;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .home-link {
+            grid-column: 1 / -1;
+            background: #999;
+            color: white;
+        }
+
+        .home-link:hover {
+            background: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">🔓 RESULTS UNLOCKED</div>
+
+        <div class="breadcrumb">
+            <a href="/">Home</a> / <a href="/stakeholder-cards">Stakeholder Cards</a> / <a href="/stakeholder-cards/<%= card.id %>">Card <%= card.id %></a> / Results
+        </div>
+
+        <h1><%= card.title %></h1>
+
+        <div class="results-header">
+            Results for Card <%= card.id %>
+        </div>
+
+        <div class="results-content">
+            <div class="section">
+                <h2>📊 What Happened?</h2>
+                <p>This is placeholder text for the results section. Add the specific outcomes, feedback, and impact analysis for this decision here.</p>
+            </div>
+
+            <div class="section">
+                <h2>💡 Key Insights</h2>
+                <p>What did this decision reveal about stakeholder relationships? What were the consequences? What learning moments emerged?</p>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Next Steps</h2>
+                <p>What should be considered as a result of this decision? How does this inform future decisions in the simulation?</p>
+            </div>
+
+            <div class="section">
+                <h2>📝 Reflection</h2>
+                <p>This is where you might include coaching questions or reflection prompts for the participant based on their decision.</p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <% if (prevId) { %>
+                <a href="/stakeholder-cards/<%= prevId %>/results" class="nav-btn">← Card <%= prevId %> Results</a>
+            <% } else { %>
+                <div style="grid-column: 1;"></div>
+            <% } %>
+            <% if (nextId) { %>
+                <a href="/stakeholder-cards/<%= nextId %>/results" class="nav-btn">Card <%= nextId %> Results →</a>
+            <% } else { %>
+                <div style="grid-column: 2;"></div>
+            <% } %>
+            <a href="/stakeholder-cards/<%= card.id %>" class="nav-btn">Back to Card <%= card.id %></a>
+            <a href="/staff-cards" class="nav-btn">Staff Results</a>
+            <a href="/" class="nav-btn home-link">← Home</a>
+        </div>
+    </div>
+</body>
+</html>
