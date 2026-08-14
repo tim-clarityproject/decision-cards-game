@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leadership Simulation Decision Cards</title>
     <style>
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstRegularDesktop.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstLightDesktop.otf') format('opentype');
+            font-weight: 300;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +24,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: #3C3C3B;
             min-height: 100vh;
             display: flex;
@@ -30,16 +42,25 @@
             text-align: center;
         }
 
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: url('/images/clarity-logo.png') center/contain no-repeat;
+        }
+
         h1 {
-            color: #333;
+            color: #3C3C3B;
             margin-bottom: 10px;
             font-size: 2.5em;
+            font-weight: 400;
         }
 
         .subtitle {
             color: #666;
             font-size: 1.1em;
             margin-bottom: 40px;
+            font-weight: 300;
         }
 
         .card-links {
@@ -57,7 +78,7 @@
             text-decoration: none;
             border-radius: 8px;
             font-size: 1.2em;
-            font-weight: 600;
+            font-weight: 400;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
@@ -83,6 +104,7 @@
             transition: background 0.2s;
             text-decoration: none;
             display: inline-block;
+            font-family: 'Nekst', sans-serif;
         }
 
         .auth-btn:hover {
@@ -106,7 +128,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>🎮 Leadership Simulation</h1>
+        <div class="logo"></div>
+        <h1>Leadership Simulation</h1>
         <p class="subtitle">Decision Cards - Round 1</p>
 
         <div class="card-links">

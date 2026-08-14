@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= card.title %> - Decision Cards Game</title>
     <style>
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstRegularDesktop.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstLightDesktop.otf') format('opentype');
+            font-weight: 300;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,8 +24,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #3C3C3B;
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -34,7 +46,7 @@
         }
 
         .breadcrumb a {
-            color: #667eea;
+            color: #FF6F5C;
             text-decoration: none;
         }
 
@@ -43,21 +55,26 @@
         }
 
         h1 {
-            color: #333;
+            color: #3C3C3B;
             font-size: 2em;
             margin-bottom: 30px;
             line-height: 1.4;
+            font-weight: 400;
         }
 
         .card-content {
             background: #f9f9f9;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #5FEF8B;
             padding: 20px;
             border-radius: 4px;
             margin-bottom: 30px;
             color: #666;
             line-height: 1.6;
             font-size: 1.05em;
+        }
+
+        .card-content strong {
+            color: #3C3C3B;
         }
 
         .actions {
@@ -73,12 +90,13 @@
             text-align: center;
             text-decoration: none;
             border-radius: 6px;
-            font-weight: 600;
+            font-weight: 400;
+            font-family: 'Nekst', sans-serif;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .view-results {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #5FEF8B 0%, #FFD29E 100%);
             color: white;
         }
 
@@ -114,11 +132,12 @@
         .nav-btn {
             padding: 12px;
             background: #f0f0f0;
-            color: #667eea;
+            color: #FF6F5C;
             text-decoration: none;
             border-radius: 6px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 400;
+            font-family: 'Nekst', sans-serif;
             transition: background 0.2s;
         }
 
@@ -156,8 +175,8 @@
         <h1><%= card.title %></h1>
 
         <div class="card-content">
-            <p><strong>Detail about card...</strong></p>
-            <p>This is placeholder text. You can fill in the actual details about this decision card here. What is the context? What decisions need to be made? What are the considerations?</p>
+            <p><strong>STAKEHOLDER PERSPECTIVE — [INSERT YOUR SCENARIO HERE]</strong></p>
+            <p>This is placeholder text. Replace with your stakeholder-focused scenario context, their perspective on the situation, their concerns, and the key decision or challenge they're facing. Consider how this stakeholder views the same situation differently than staff members might.</p>
         </div>
 
         <div class="actions">

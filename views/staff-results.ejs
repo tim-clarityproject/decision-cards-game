@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results - <%= card.title %></title>
+    <title>Card <%= card.id %> Results - Decision Cards Game</title>
     <style>
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstRegularDesktop.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstLightDesktop.otf') format('opentype');
+            font-weight: 300;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,14 +24,14 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #3C3C3B;
             min-height: 100vh;
             padding: 40px 20px;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             background: white;
             border-radius: 12px;
@@ -34,7 +46,7 @@
         }
 
         .breadcrumb a {
-            color: #667eea;
+            color: #FF6F5C;
             text-decoration: none;
         }
 
@@ -42,48 +54,47 @@
             text-decoration: underline;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: #2ecc71;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
         h1 {
-            color: #333;
+            color: #3C3C3B;
             font-size: 2em;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             line-height: 1.4;
+            font-weight: 400;
         }
 
-        .section {
+        .subtitle {
+            color: #999;
+            font-size: 0.95em;
             margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #eee;
         }
 
-        .section:last-child {
-            border-bottom: none;
-        }
-
-        .section h2 {
-            color: #667eea;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-
-        .section p {
+        .results-section {
+            background: #f9f9f9;
+            border-left: 4px solid #FF6F5C;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
             color: #666;
-            line-height: 1.8;
-            font-size: 1em;
+            line-height: 1.6;
+            font-size: 1.05em;
         }
 
-        .section p + p {
-            margin-top: 12px;
+        .section-title {
+            color: #3C3C3B;
+            font-size: 1.3em;
+            font-weight: 400;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 1.4em;
+        }
+
+        .results-section strong {
+            color: #3C3C3B;
         }
 
         .navigation {
@@ -98,11 +109,12 @@
         .nav-btn {
             padding: 12px;
             background: #f0f0f0;
-            color: #667eea;
+            color: #FF6F5C;
             text-decoration: none;
             border-radius: 6px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 400;
+            font-family: 'Nekst', sans-serif;
             transition: background 0.2s;
         }
 
@@ -119,6 +131,16 @@
         .home-link:hover {
             background: #777;
         }
+
+        .reflection-box {
+            background: linear-gradient(135deg, #FFF5F1 0%, #F0F9FF 100%);
+            border-left: 4px solid #5FEF8B;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -127,36 +149,60 @@
             <a href="/">Home</a> / <a href="/staff-cards">Staff Cards</a> / <a href="/staff-cards/<%= card.id %>">Card <%= card.id %></a> / Results
         </div>
 
-        <span class="badge">✅ RESULTS UNLOCKED</span>
-        <h1><%= card.title %> - Results</h1>
+        <h1><%= card.title %> — Results</h1>
+        <p class="subtitle">Analysis & Insights</p>
 
-        <div class="section">
-            <h2>📊 What Happened?</h2>
-            <p>This is placeholder text for the results section. Replace this with what actually happened when participants made this decision during the simulation.</p>
-            <p>What were the consequences? What did they learn?</p>
+        <div class="results-section">
+            <div class="section-title">
+                <span class="section-icon">📊</span>
+                <span>What Happened?</span>
+            </div>
+            <p><strong>[INSERT RESULTS SUMMARY]</strong></p>
+            <p>This section describes what occurred based on the decisions made by the participant. Replace this placeholder with a detailed explanation of the outcomes and consequences of the choices presented in the scenario.</p>
         </div>
 
-        <div class="section">
-            <h2>💡 Key Insights</h2>
-            <p>This is placeholder text for key insights. What are the main takeaways from this scenario?</p>
-            <p>What patterns did you notice? What surprised you?</p>
+        <div class="results-section">
+            <div class="section-title">
+                <span class="section-icon">💡</span>
+                <span>Key Insights</span>
+            </div>
+            <p><strong>[INSERT KEY LEARNING POINTS]</strong></p>
+            <p>Highlight the critical insights and lessons from this decision scenario. What patterns emerged? What were the trade-offs? What does this reveal about leadership decision-making?</p>
         </div>
 
-        <div class="section">
-            <h2>🎯 Next Steps</h2>
-            <p>This is placeholder text for next steps. What should participants do with this learning?</p>
-            <p>How can they apply this to their real work?</p>
+        <div class="results-section">
+            <div class="section-title">
+                <span class="section-icon">🎯</span>
+                <span>Next Steps</span>
+            </div>
+            <p><strong>[INSERT RECOMMENDED ACTIONS]</strong></p>
+            <p>What should participants consider or do differently based on what they learned from this scenario? How can they apply these insights to their own leadership challenges?</p>
         </div>
 
-        <div class="section">
-            <h2>🤔 Reflection</h2>
-            <p>This is placeholder text for reflection questions. What do you want participants to think about?</p>
+        <div class="results-section">
+            <div class="section-title">
+                <span class="section-icon">🔍</span>
+                <span>Reflection</span>
+            </div>
+            <div class="reflection-box">
+                <p><strong>[INSERT REFLECTION PROMPT]</strong></p>
+                <p>What personal insights did this scenario reveal about your approach to decision-making under pressure? How might you handle a similar situation differently?</p>
+            </div>
         </div>
 
         <div class="navigation">
-            <a href="/staff-cards/<%= card.id %>" class="nav-btn">← Back to Card</a>
-            <a href="/staff-cards" class="nav-btn">All Staff Cards</a>
-            <a href="/stakeholder-cards" class="nav-btn">Stakeholder Results</a>
+            <% if (prevId) { %>
+                <a href="/staff-cards/<%= prevId %>/results" class="nav-btn">← Previous Card</a>
+            <% } else { %>
+                <div style="grid-column: 1;"></div>
+            <% } %>
+            <% if (nextId) { %>
+                <a href="/staff-cards/<%= nextId %>/results" class="nav-btn">Next Card →</a>
+            <% } else { %>
+                <div style="grid-column: 2;"></div>
+            <% } %>
+            <a href="/staff-cards" class="nav-btn">Back to Staff Cards</a>
+            <a href="/stakeholder-cards" class="nav-btn">Go to Stakeholder Cards</a>
             <a href="/" class="nav-btn home-link">← Home</a>
         </div>
     </div>
