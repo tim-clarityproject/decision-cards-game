@@ -212,13 +212,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Unlock Results</h1>
+        <h1><% if (round) { %>Unlock Round <%= round %> Results<% } else { %>Unlock Results<% } %></h1>
 
         <% if (error) { %>
             <div class="error"><%= error %></div>
         <% } %>
 
         <form method="POST" action="/login">
+            <input type="hidden" name="round" value="<%= round || 1 %>">
             <div class="form-group">
                 <label for="password">Enter Password</label>
                 <input type="password" id="password" name="password" required autofocus>

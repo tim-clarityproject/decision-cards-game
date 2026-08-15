@@ -6,7 +6,11 @@ const app = express();
 
 // Configuration
 const PORT = process.env.PORT || 3000;
-const GAME_PASSWORD = process.env.GAME_PASSWORD || 'admin123'; // Change in production
+const ROUND_PASSWORDS = {
+  1: process.env.ROUND_1_PASSWORD || 'trust',
+  2: process.env.ROUND_2_PASSWORD || 'alignment',
+  3: process.env.ROUND_3_PASSWORD || 'autonomy'
+};
 
 // Middleware
 app.use(express.static('public'));
@@ -291,38 +295,50 @@ const cardsByRound = {
 const staffCards = cardsByRound[1].team;
 const stakeholderCards = cardsByRound[1].stakeholder;
 
-// Middleware to check if user is authenticated for results
+// Middleware to check if user is authenticated for a specific round
 const requireAuth = (req, res, next) => {
-  if (req.session.authenticated) {
+  const roundId = parseInt(req.params.roundId) || 1;
+  if (req.session.authenticatedRounds && req.session.authenticatedRounds.includes(roundId)) {
     next();
   } else {
-    res.redirect('/login');
+    res.redirect('/login?round=' + roundId);
   }
 };
 
 // HOME PAGE
 app.get('/', (req, res) => {
-  res.render('home', { authenticated: req.session.authenticated });
+  const authenticatedRounds = req.session.authenticatedRounds || [];
+  res.render('home', {
+    authenticated: authenticatedRounds.length > 0,
+    authenticatedRounds: authenticatedRounds
+  });
 });
 
 // LOGIN PAGE
 app.get('/login', (req, res) => {
-  res.render('login', { error: null });
+  const round = parseInt(req.query.round) || null;
+  res.render('login', { error: null, round });
 });
 
 app.post('/login', (req, res) => {
-  const { password } = req.body;
+  const { password, round } = req.body;
+  const roundId = parseInt(round) || 1;
 
-  if (password === GAME_PASSWORD) {
-    req.session.authenticated = true;
-    res.redirect('/');
+  if (ROUND_PASSWORDS[roundId] && password === ROUND_PASSWORDS[roundId]) {
+    if (!req.session.authenticatedRounds) {
+      req.session.authenticatedRounds = [];
+    }
+    if (!req.session.authenticatedRounds.includes(roundId)) {
+      req.session.authenticatedRounds.push(roundId);
+    }
+    res.redirect('/round/' + roundId);
   } else {
-    res.render('login', { error: 'Incorrect password. Please try again.' });
+    res.render('login', { error: 'Incorrect password. Please try again.', round: roundId });
   }
 });
 
 app.get('/logout', (req, res) => {
-  req.session.authenticated = false;
+  req.session.authenticatedRounds = [];
   res.redirect('/');
 });
 
