@@ -526,5 +526,7 @@ app.get('/round/:roundId/stakeholder-actions/:id/results', requireAuth, (req, re
 // Start server
 app.listen(PORT, () => {
   console.log(`Decision Cards Game running on http://localhost:${PORT}`);
-  console.log(`Current password: ${GAME_PASSWORD}`);
+  console.log(`Round 1 password: ${ROUND_PASSWORDS[1]}`);
+  console.log(`Round 2 password: ${ROUND_PASSWORDS[2]}`);
+  console.log(`Round 3 password: ${ROUND_PASSWORDS[3]}`);
 });
