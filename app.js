@@ -310,7 +310,8 @@ app.get('/', (req, res) => {
   const authenticatedRounds = req.session.authenticatedRounds || [];
   res.render('home', {
     authenticated: authenticatedRounds.length > 0,
-    authenticatedRounds: authenticatedRounds
+    authenticatedRounds: authenticatedRounds,
+    error: null
   });
 });
 
