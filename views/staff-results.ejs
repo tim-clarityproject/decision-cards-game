@@ -297,8 +297,12 @@
                 <span class="section-icon">📊</span>
                 <span>What Happened?</span>
             </div>
-            <p><strong>[INSERT RESULTS SUMMARY]</strong></p>
-            <p>This section describes what occurred based on the decisions made by the participant. Replace this placeholder with a detailed explanation of the outcomes and consequences of the choices presented in the scenario.</p>
+            <% if (card.results) { %>
+                <p><%= card.results %></p>
+            <% } else { %>
+                <p><strong>[INSERT RESULTS SUMMARY]</strong></p>
+                <p>This section describes what occurred based on the decisions made by the participant. Replace this placeholder with a detailed explanation of the outcomes and consequences of the choices presented in the scenario.</p>
+            <% } %>
         </div>
 
         <div class="results-section">
@@ -306,8 +310,12 @@
                 <span class="section-icon">💡</span>
                 <span>Key Insights</span>
             </div>
-            <p><strong>[INSERT KEY LEARNING POINTS]</strong></p>
-            <p>Highlight the critical insights and lessons from this decision scenario. What patterns emerged? What were the trade-offs? What does this reveal about leadership decision-making?</p>
+            <% if (card.keyInsights) { %>
+                <p><%= card.keyInsights %></p>
+            <% } else { %>
+                <p><strong>[INSERT KEY LEARNING POINTS]</strong></p>
+                <p>Highlight the critical insights and lessons from this decision scenario. What patterns emerged? What were the trade-offs? What does this reveal about leadership decision-making?</p>
+            <% } %>
         </div>
 
         <div class="results-section">
@@ -315,8 +323,12 @@
                 <span class="section-icon">🎯</span>
                 <span>Next Steps</span>
             </div>
-            <p><strong>[INSERT RECOMMENDED ACTIONS]</strong></p>
-            <p>What should participants consider or do differently based on what they learned from this scenario? How can they apply these insights to their own leadership challenges?</p>
+            <% if (card.nextSteps) { %>
+                <p><%= card.nextSteps %></p>
+            <% } else { %>
+                <p><strong>[INSERT RECOMMENDED ACTIONS]</strong></p>
+                <p>What should participants consider or do differently based on what they learned from this scenario? How can they apply these insights to their own leadership challenges?</p>
+            <% } %>
         </div>
 
         <div class="results-section">
@@ -325,8 +337,12 @@
                 <span>Reflection</span>
             </div>
             <div class="reflection-box">
-                <p><strong>[INSERT REFLECTION PROMPT]</strong></p>
-                <p>What personal insights did this scenario reveal about your approach to decision-making under pressure? How might you handle a similar situation differently?</p>
+                <% if (card.reflection) { %>
+                    <p><strong><%= card.reflection %></strong></p>
+                <% } else { %>
+                    <p><strong>[INSERT REFLECTION PROMPT]</strong></p>
+                    <p>What personal insights did this scenario reveal about your approach to decision-making under pressure? How might you handle a similar situation differently?</p>
+                <% } %>
             </div>
         </div>
 

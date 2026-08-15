@@ -303,8 +303,12 @@
         <h1><%= card.title %></h1>
 
         <div class="card-content">
-            <p><strong>SCENARIO DETAILS — [INSERT YOUR SCENARIO HERE]</strong></p>
-            <p>This is placeholder text. Replace with your actual scenario context, situation description, and the key decision or challenge that participants need to respond to.</p>
+            <% if (card.scenario) { %>
+                <p><%= card.scenario %></p>
+            <% } else { %>
+                <p><strong>SCENARIO DETAILS — [INSERT YOUR SCENARIO HERE]</strong></p>
+                <p>This is placeholder text. Replace with your actual scenario context, situation description, and the key decision or challenge that participants need to respond to.</p>
+            <% } %>
         </div>
 
         <div class="actions">
