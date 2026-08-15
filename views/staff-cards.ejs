@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Cards - Leadership Simulation</title>
+    <style>
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstRegularDesktop.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Nekst';
+            src: url('/fonts/NekstLightDesktop.otf') format('opentype');
+            font-weight: 300;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #FAFAFA;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .breadcrumb {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #2C5F7F;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #1A1A1A;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .top-nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #f0f0f0;
+            color: #2C5F7F;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 400;
+            font-family: 'Nekst', sans-serif;
+            transition: background 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .nav-btn.active {
+            background: #2C5F7F;
+            color: white;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #E8E8E8;
+            border-radius: 4px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .card-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #D4B5A0;
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            color: #1A1A1A;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .card-link {
+            display: inline-block;
+            color: #2C5F7F;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .card-link:hover {
+            color: #1F4560;
+        }
+
+        .card-link::after {
+            content: " →";
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-link a {
+            color: #5C9D8F;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .back-link a:hover {
+            color: #457B6B;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 12px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .cards-grid {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="breadcrumb">
+                <a href="/">Home</a> / Staff Cards
+            </div>
+            <h1>📋 Decision Cards for Reports</h1>
+            <p class="subtitle">Staff Perspective Scenarios</p>
+        </div>
+
+        <div class="top-nav">
+            <a href="/staff-cards" class="nav-btn active">Staff Cards</a>
+            <a href="/stakeholder-cards" class="nav-btn">Stakeholder Cards</a>
+        </div>
+
+        <div class="cards-grid">
+            <% cards.forEach(card => { %>
+                <div class="card">
+                    <div class="card-number"><%= card.id %></div>
+                    <div class="card-title"><%= card.title %></div>
+                    <a href="/staff-cards/<%= card.id %>" class="card-link">View Card</a>
+                </div>
+            <% }); %>
+        </div>
+
+        <div class="back-link">
+            <a href="/">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
