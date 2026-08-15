@@ -307,12 +307,7 @@ const requireAuth = (req, res, next) => {
 
 // HOME PAGE
 app.get('/', (req, res) => {
-  const authenticatedRounds = req.session.authenticatedRounds || [];
-  res.render('home', {
-    authenticated: authenticatedRounds.length > 0,
-    authenticatedRounds: authenticatedRounds,
-    error: null
-  });
+  res.render('home');
 });
 
 // LOGIN HANDLER (posts from home page)
@@ -327,14 +322,14 @@ app.post('/login', (req, res) => {
     if (!req.session.authenticatedRounds.includes(roundId)) {
       req.session.authenticatedRounds.push(roundId);
     }
-    res.redirect('/');
+    res.redirect('/round/' + roundId);
   } else {
     const authenticatedRounds = req.session.authenticatedRounds || [];
-    res.render('home', {
+    res.render('round', {
+      roundNumber: roundId,
       error: 'Incorrect password. Please try again.',
       authenticated: authenticatedRounds.length > 0,
-      authenticatedRounds: authenticatedRounds,
-      errorRound: roundId
+      authenticatedRounds: authenticatedRounds
     });
   }
 });
@@ -409,9 +404,12 @@ app.get('/round/:roundId', (req, res) => {
   const roundId = parseInt(req.params.roundId);
   if (![1, 2, 3].includes(roundId)) return res.status(404).send('Round not found');
 
+  const authenticatedRounds = req.session.authenticatedRounds || [];
   res.render('round', {
     roundNumber: roundId,
-    authenticated: req.session.authenticated
+    authenticated: authenticatedRounds.length > 0,
+    authenticatedRounds: authenticatedRounds,
+    error: null
   });
 });
 

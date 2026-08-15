@@ -190,6 +190,24 @@
             <a href="/round/<%= roundNumber %>/team-actions" class="card-link">📋 Team Actions for Round <%= roundNumber %></a>
             <a href="/round/<%= roundNumber %>/stakeholder-actions" class="card-link">👥 Stakeholder Actions for Round <%= roundNumber %></a>
         </div>
+
+        <div style="background: white; border: 1px solid #E8E8E8; border-radius: 4px; padding: 30px; margin-top: 40px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+            <% if (authenticatedRounds && authenticatedRounds.includes(roundNumber)) { %>
+                <p style="color: #5C9D8F; font-size: 1em; margin: 0;">✓ Results unlocked for this round</p>
+            <% } else { %>
+                <h3 style="color: #1A1A1A; font-size: 1.2em; margin-bottom: 20px; font-weight: 400;">Unlock Results</h3>
+                <form method="POST" action="/login" style="max-width: 300px; margin: 0 auto;">
+                    <% if (error) { %>
+                        <div style="background: #FDE8E8; border: 1px solid #F0C4C4; color: #C44545; padding: 12px; border-radius: 4px; margin-bottom: 16px; font-size: 0.95em;">
+                            <%= error %>
+                        </div>
+                    <% } %>
+                    <input type="hidden" name="round" value="<%= roundNumber %>">
+                    <input type="password" name="password" placeholder="Enter password" required style="width: 100%; padding: 12px; border: 1px solid #D8D8D8; border-radius: 4px; font-size: 1em; font-family: 'Nekst', sans-serif; margin-bottom: 12px; background: #FAFAFA;">
+                    <button type="submit" style="width: 100%; padding: 12px; background: #2C5F7F; color: white; border: none; border-radius: 4px; font-size: 1em; cursor: pointer; font-family: 'Nekst', sans-serif; font-weight: 400; transition: all 0.2s;" onmouseover="this.style.background='#1F4560'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#2C5F7F'; this.style.transform='translateY(0)';">Unlock Results</button>
+                </form>
+            <% } %>
+        </div>
     </div>
 
     <div class="back-link">

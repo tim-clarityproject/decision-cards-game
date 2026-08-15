@@ -316,61 +316,6 @@
             <a href="/round/3" class="card-link">🎯 Round 3</a>
         </div>
 
-        <div class="auth-section">
-            <% if (error) { %>
-                <div style="background: #FDE8E8; border: 1px solid #F0C4C4; color: #C44545; padding: 14px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95em;">
-                    <%= error %>
-                </div>
-            <% } %>
-            <h2 style="text-align: center; color: #1A1A1A; font-size: 1.4em; margin-bottom: 24px; font-weight: 400;">Unlock Results</h2>
-
-            <div class="auth-grid">
-                <div class="round-auth <% if (authenticatedRounds && authenticatedRounds.includes(1)) { %>authenticated<% } %>">
-                    <h3>Round 1</h3>
-                    <% if (authenticatedRounds && authenticatedRounds.includes(1)) { %>
-                        <p style="color: #5C9D8F; font-size: 0.95em;">Unlocked</p>
-                    <% } else { %>
-                        <form method="POST" action="/login">
-                            <input type="hidden" name="round" value="1">
-                            <input type="password" class="password-input" name="password" placeholder="Enter password" required>
-                            <button type="submit" class="submit-btn">Unlock</button>
-                        </form>
-                    <% } %>
-                </div>
-
-                <div class="round-auth <% if (authenticatedRounds && authenticatedRounds.includes(2)) { %>authenticated<% } %>">
-                    <h3>Round 2</h3>
-                    <% if (authenticatedRounds && authenticatedRounds.includes(2)) { %>
-                        <p style="color: #5C9D8F; font-size: 0.95em;">Unlocked</p>
-                    <% } else { %>
-                        <form method="POST" action="/login">
-                            <input type="hidden" name="round" value="2">
-                            <input type="password" class="password-input" name="password" placeholder="Enter password" required>
-                            <button type="submit" class="submit-btn">Unlock</button>
-                        </form>
-                    <% } %>
-                </div>
-
-                <div class="round-auth <% if (authenticatedRounds && authenticatedRounds.includes(3)) { %>authenticated<% } %>">
-                    <h3>Round 3</h3>
-                    <% if (authenticatedRounds && authenticatedRounds.includes(3)) { %>
-                        <p style="color: #5C9D8F; font-size: 0.95em;">Unlocked</p>
-                    <% } else { %>
-                        <form method="POST" action="/login">
-                            <input type="hidden" name="round" value="3">
-                            <input type="password" class="password-input" name="password" placeholder="Enter password" required>
-                            <button type="submit" class="submit-btn">Unlock</button>
-                        </form>
-                    <% } %>
-                </div>
-            </div>
-
-            <% if (authenticated) { %>
-                <div class="logout-section">
-                    <a href="/logout" class="logout-btn">Sign Out of All Rounds</a>
-                </div>
-            <% } %>
-        </div>
     </div>
 </body>
 </html>
