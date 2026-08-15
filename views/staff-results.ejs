@@ -25,7 +25,7 @@
 
         body {
             font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #3C3C3B;
+            background: #FAFAFA;
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -34,19 +34,20 @@
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
+            border-radius: 4px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E8E8E8;
         }
 
         .breadcrumb {
-            color: #999;
+            color: #666;
             font-size: 0.95em;
             margin-bottom: 20px;
         }
 
         .breadcrumb a {
-            color: #FF6F5C;
+            color: #2C5F7F;
             text-decoration: none;
         }
 
@@ -55,7 +56,7 @@
         }
 
         h1 {
-            color: #3C3C3B;
+            color: #1A1A1A;
             font-size: 2em;
             margin-bottom: 10px;
             line-height: 1.4;
@@ -63,14 +64,14 @@
         }
 
         .subtitle {
-            color: #999;
+            color: #666;
             font-size: 0.95em;
             margin-bottom: 30px;
         }
 
         .results-section {
             background: #f9f9f9;
-            border-left: 4px solid #FF6F5C;
+            border-left: 4px solid #2C5F7F;
             padding: 20px;
             border-radius: 4px;
             margin-bottom: 25px;
@@ -80,7 +81,7 @@
         }
 
         .section-title {
-            color: #3C3C3B;
+            color: #1A1A1A;
             font-size: 1.3em;
             font-weight: 400;
             margin-bottom: 15px;
@@ -94,7 +95,7 @@
         }
 
         .results-section strong {
-            color: #3C3C3B;
+            color: #1A1A1A;
         }
 
         .navigation {
@@ -103,15 +104,15 @@
             gap: 15px;
             margin-top: 30px;
             padding-top: 30px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #E8E8E8;
         }
 
         .nav-btn {
             padding: 12px;
             background: #f0f0f0;
-            color: #FF6F5C;
+            color: #2C5F7F;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 4px;
             text-align: center;
             font-weight: 400;
             font-family: 'Nekst', sans-serif;
@@ -124,22 +125,161 @@
 
         .home-link {
             grid-column: 1 / -1;
-            background: #999;
+            background: #5C9D8F;
             color: white;
         }
 
         .home-link:hover {
-            background: #777;
+            background: #457B6B;
         }
 
         .reflection-box {
-            background: linear-gradient(135deg, #FFF5F1 0%, #F0F9FF 100%);
-            border-left: 4px solid #5FEF8B;
+            background: #f9f9f9;
+            border-left: 4px solid #2C5F7F;
             padding: 20px;
             border-radius: 4px;
             margin-top: 20px;
             font-style: italic;
             color: #555;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 30px 20px;
+                border-radius: 4px;
+            }
+
+            .breadcrumb {
+                font-size: 0.85em;
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-bottom: 8px;
+                line-height: 1.3;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+                margin-bottom: 20px;
+            }
+
+            .results-section {
+                padding: 15px;
+                margin-bottom: 20px;
+                font-size: 0.95em;
+            }
+
+            .section-title {
+                font-size: 1.1em;
+                margin-bottom: 12px;
+            }
+
+            .section-icon {
+                font-size: 1.2em;
+            }
+
+            .reflection-box {
+                padding: 15px;
+                margin-top: 15px;
+            }
+
+            .navigation {
+                gap: 10px;
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+
+            .nav-btn {
+                padding: 10px;
+                font-size: 0.9em;
+                border-radius: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            .container {
+                padding: 20px 15px;
+                border-radius: 4px;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            .breadcrumb {
+                font-size: 0.75em;
+                margin-bottom: 12px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            h1 {
+                font-size: 1.3em;
+                margin-bottom: 5px;
+                line-height: 1.3;
+            }
+
+            .subtitle {
+                font-size: 0.85em;
+                margin-bottom: 15px;
+            }
+
+            .results-section {
+                padding: 12px;
+                margin-bottom: 15px;
+                font-size: 0.9em;
+                line-height: 1.5;
+                border-radius: 4px;
+            }
+
+            .section-title {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+
+            .section-icon {
+                font-size: 1.1em;
+            }
+
+            .results-section p {
+                margin-bottom: 10px;
+            }
+
+            .reflection-box {
+                padding: 12px;
+                margin-top: 12px;
+                border-radius: 4px;
+                font-size: 0.9em;
+            }
+
+            .navigation {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+
+            .nav-btn {
+                padding: 10px;
+                font-size: 0.85em;
+                border-radius: 4px;
+                width: 100%;
+            }
+
+            .home-link {
+                grid-column: auto;
+                margin-top: 5px;
+            }
         }
     </style>
 </head>

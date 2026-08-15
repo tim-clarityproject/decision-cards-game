@@ -25,7 +25,7 @@
 
         body {
             font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #3C3C3B;
+            background: #FAFAFA;
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -34,19 +34,20 @@
             max-width: 700px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
+            border-radius: 4px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E8E8E8;
         }
 
         .breadcrumb {
-            color: #999;
+            color: #666;
             font-size: 0.95em;
             margin-bottom: 20px;
         }
 
         .breadcrumb a {
-            color: #FF6F5C;
+            color: #2C5F7F;
             text-decoration: none;
         }
 
@@ -55,7 +56,7 @@
         }
 
         h1 {
-            color: #3C3C3B;
+            color: #1A1A1A;
             font-size: 2em;
             margin-bottom: 30px;
             line-height: 1.4;
@@ -64,7 +65,7 @@
 
         .card-content {
             background: #f9f9f9;
-            border-left: 4px solid #FF6F5C;
+            border-left: 4px solid #2C5F7F;
             padding: 20px;
             border-radius: 4px;
             margin-bottom: 30px;
@@ -74,7 +75,7 @@
         }
 
         .card-content strong {
-            color: #3C3C3B;
+            color: #1A1A1A;
         }
 
         .actions {
@@ -89,18 +90,19 @@
             padding: 15px 20px;
             text-align: center;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 4px;
             font-weight: 400;
             font-family: 'Nekst', sans-serif;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .view-results {
-            background: linear-gradient(135deg, #FF6F5C 0%, #FFD29E 100%);
+            background: #2C5F7F;
             color: white;
         }
 
         .view-results:hover {
+            background: #1F4560;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -126,15 +128,15 @@
             gap: 15px;
             margin-top: 30px;
             padding-top: 30px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #E8E8E8;
         }
 
         .nav-btn {
             padding: 12px;
             background: #f0f0f0;
-            color: #FF6F5C;
+            color: #2C5F7F;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 4px;
             text-align: center;
             font-weight: 400;
             font-family: 'Nekst', sans-serif;
@@ -147,12 +149,12 @@
 
         .home-link {
             grid-column: 1 / -1;
-            background: #999;
+            background: #5C9D8F;
             color: white;
         }
 
         .home-link:hover {
-            background: #777;
+            background: #457B6B;
         }
 
         .status-badge {
@@ -163,6 +165,132 @@
             border-radius: 20px;
             font-size: 0.85em;
             margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 30px 20px;
+                border-radius: 4px;
+            }
+
+            .breadcrumb {
+                font-size: 0.85em;
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+                line-height: 1.3;
+            }
+
+            .card-content {
+                padding: 15px;
+                margin-bottom: 20px;
+                font-size: 0.95em;
+            }
+
+            .action-btn {
+                padding: 12px 16px;
+                font-size: 0.95em;
+            }
+
+            .navigation {
+                gap: 10px;
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+
+            .nav-btn {
+                padding: 10px;
+                font-size: 0.9em;
+                border-radius: 4px;
+            }
+
+            .status-badge {
+                padding: 5px 10px;
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            .container {
+                padding: 20px 15px;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            }
+
+            .breadcrumb {
+                font-size: 0.8em;
+                margin-bottom: 12px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            h1 {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+                line-height: 1.3;
+            }
+
+            .card-content {
+                padding: 12px;
+                margin-bottom: 15px;
+                font-size: 0.9em;
+                line-height: 1.5;
+                border-radius: 3px;
+            }
+
+            .actions {
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .action-btn {
+                padding: 12px 14px;
+                font-size: 0.85em;
+                border-radius: 4px;
+            }
+
+            .lock-icon {
+                margin-right: 6px;
+            }
+
+            .navigation {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+
+            .nav-btn {
+                padding: 10px;
+                font-size: 0.85em;
+                border-radius: 4px;
+                width: 100%;
+            }
+
+            .home-link {
+                grid-column: auto;
+                margin-top: 5px;
+            }
+
+            .status-badge {
+                padding: 5px 8px;
+                font-size: 0.75em;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>

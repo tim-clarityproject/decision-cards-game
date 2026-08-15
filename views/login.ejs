@@ -25,109 +25,154 @@
 
         body {
             font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #3C3C3B;
+            background: #FAFAFA;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            padding: 60px 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            max-width: 480px;
+            width: 100%;
+            padding: 50px 40px;
             text-align: center;
+            border: 1px solid #E8E8E8;
         }
 
         h1 {
-            color: #3C3C3B;
+            color: #1A1A1A;
             margin-bottom: 30px;
-            font-size: 2em;
+            font-size: 2.2em;
             font-weight: 400;
+            line-height: 1.2;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             text-align: left;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
-            color: #333;
+            margin-bottom: 10px;
+            color: #1A1A1A;
             font-weight: 400;
+            font-size: 0.95em;
         }
 
         input[type="password"] {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
+            padding: 14px;
+            border: 1px solid #D8D8D8;
+            border-radius: 4px;
             font-size: 1em;
             font-family: 'Nekst', sans-serif;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
+            background: #FAFAFA;
         }
 
         input[type="password"]:focus {
             outline: none;
-            border-color: #FF6F5C;
+            border-color: #2C5F7F;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(44, 95, 127, 0.1);
         }
 
         .error {
-            color: #e74c3c;
-            background: #fadbd8;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
+            color: #C44545;
+            background: #FDE8E8;
+            padding: 14px;
+            border-radius: 4px;
+            margin-bottom: 24px;
             font-size: 0.95em;
+            border: 1px solid #F0C4C4;
         }
 
         button {
             width: 100%;
-            padding: 12px;
-            background: #FF6F5C;
+            padding: 14px;
+            background: #2C5F7F;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 4px;
             font-size: 1em;
             font-weight: 400;
             cursor: pointer;
             font-family: 'Nekst', sans-serif;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
         }
 
         button:hover {
-            background: #E85A4A;
+            background: #1F4560;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .back-link {
-            margin-top: 20px;
+            margin-top: 28px;
+            text-align: center;
         }
 
         .back-link a {
-            color: #FF6F5C;
+            color: #2C5F7F;
             text-decoration: none;
             font-size: 0.95em;
+            transition: all 0.2s;
         }
 
         .back-link a:hover {
-            text-decoration: underline;
+            color: #1F4560;
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+
             .container {
-                max-width: 100%;
                 padding: 40px 30px;
             }
 
             h1 {
-                font-size: 1.6em;
-                margin-bottom: 25px;
+                font-size: 1.8em;
+                margin-bottom: 28px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            label {
+                font-size: 0.95em;
+            }
+
+            input[type="password"] {
+                padding: 12px;
+                font-size: 0.95em;
+            }
+
+            button {
+                padding: 12px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-bottom: 24px;
             }
 
             .form-group {
@@ -135,80 +180,39 @@
             }
 
             label {
-                font-size: 0.95em;
-            }
-
-            input[type="password"] {
-                padding: 10px;
-                font-size: 0.95em;
-            }
-
-            button {
-                padding: 11px;
-                font-size: 0.95em;
-            }
-
-            .back-link a {
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 30px 20px;
-                border-radius: 8px;
-            }
-
-            h1 {
-                font-size: 1.4em;
-                margin-bottom: 20px;
-            }
-
-            .form-group {
-                margin-bottom: 15px;
-            }
-
-            label {
-                margin-bottom: 6px;
+                margin-bottom: 8px;
                 font-size: 0.9em;
             }
 
             input[type="password"] {
-                padding: 10px;
+                padding: 12px;
                 font-size: 1em;
-                border-radius: 4px;
             }
 
             .error {
-                padding: 10px;
-                margin-bottom: 15px;
+                padding: 12px;
+                margin-bottom: 18px;
                 font-size: 0.9em;
-                border-radius: 4px;
             }
 
             button {
                 padding: 12px;
                 font-size: 0.95em;
-                border-radius: 4px;
             }
 
             .back-link {
-                margin-top: 15px;
+                margin-top: 20px;
             }
 
             .back-link a {
-                font-size: 0.85em;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🔓 Unlock Results</h1>
+        <h1>Unlock Results</h1>
 
         <% if (error) { %>
             <div class="error"><%= error %></div>
