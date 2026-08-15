@@ -301,7 +301,7 @@ const requireAuth = (req, res, next) => {
   if (req.session.authenticatedRounds && req.session.authenticatedRounds.includes(roundId)) {
     next();
   } else {
-    res.redirect('/login?round=' + roundId);
+    res.redirect('/');
   }
 };
 
@@ -314,12 +314,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// LOGIN PAGE
-app.get('/login', (req, res) => {
-  const round = parseInt(req.query.round) || null;
-  res.render('login', { error: null, round });
-});
-
+// LOGIN HANDLER (posts from home page)
 app.post('/login', (req, res) => {
   const { password, round } = req.body;
   const roundId = parseInt(round) || 1;
@@ -331,9 +326,15 @@ app.post('/login', (req, res) => {
     if (!req.session.authenticatedRounds.includes(roundId)) {
       req.session.authenticatedRounds.push(roundId);
     }
-    res.redirect('/round/' + roundId);
+    res.redirect('/');
   } else {
-    res.render('login', { error: 'Incorrect password. Please try again.', round: roundId });
+    const authenticatedRounds = req.session.authenticatedRounds || [];
+    res.render('home', {
+      error: 'Incorrect password. Please try again.',
+      authenticated: authenticatedRounds.length > 0,
+      authenticatedRounds: authenticatedRounds,
+      errorRound: roundId
+    });
   }
 });
 
