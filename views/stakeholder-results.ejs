@@ -286,7 +286,7 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/">Home</a> / <a href="/stakeholder-cards">Stakeholder Actions for Round 1</a> / <a href="/stakeholder-cards/<%= card.id %>">Card <%= card.id %></a> / Results
+            <a href="/">Home</a> <% if (roundNumber) { %> / <a href="/round/<%= roundNumber %>">Round <%= roundNumber %></a> / <a href="/round/<%= roundNumber %>/stakeholder-actions">Stakeholder Actions for Round <%= roundNumber %></a> / <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= card.id %>">Card <%= card.id %></a><% } else { %> / <a href="/stakeholder-cards">Stakeholder Actions for Round 1</a> / <a href="/stakeholder-cards/<%= card.id %>">Card <%= card.id %></a><% } %> / Results
         </div>
 
         <h1><%= card.title %> — Results</h1>
@@ -332,18 +332,32 @@
 
         <div class="navigation">
             <% if (prevId) { %>
-                <a href="/stakeholder-cards/<%= prevId %>/results" class="nav-btn">← Previous Card</a>
+                <% if (roundNumber) { %>
+                    <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= prevId %>/results" class="nav-btn">← Previous Card</a>
+                <% } else { %>
+                    <a href="/stakeholder-cards/<%= prevId %>/results" class="nav-btn">← Previous Card</a>
+                <% } %>
             <% } else { %>
                 <div style="grid-column: 1;"></div>
             <% } %>
             <% if (nextId) { %>
-                <a href="/stakeholder-cards/<%= nextId %>/results" class="nav-btn">Next Card →</a>
+                <% if (roundNumber) { %>
+                    <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= nextId %>/results" class="nav-btn">Next Card →</a>
+                <% } else { %>
+                    <a href="/stakeholder-cards/<%= nextId %>/results" class="nav-btn">Next Card →</a>
+                <% } %>
             <% } else { %>
                 <div style="grid-column: 2;"></div>
             <% } %>
-            <a href="/stakeholder-cards" class="nav-btn">Back to Stakeholder Actions</a>
-            <a href="/staff-cards" class="nav-btn">Go to Team Actions</a>
-            <a href="/" class="nav-btn home-link">← Home</a>
+            <% if (roundNumber) { %>
+                <a href="/round/<%= roundNumber %>/stakeholder-actions" class="nav-btn">Back to Stakeholder Actions</a>
+                <a href="/round/<%= roundNumber %>/team-actions" class="nav-btn">Go to Team Actions</a>
+                <a href="/round/<%= roundNumber %>" class="nav-btn home-link">← Back to Round <%= roundNumber %></a>
+            <% } else { %>
+                <a href="/stakeholder-cards" class="nav-btn">Back to Stakeholder Actions</a>
+                <a href="/staff-cards" class="nav-btn">Go to Team Actions</a>
+                <a href="/" class="nav-btn home-link">← Home</a>
+            <% } %>
         </div>
     </div>
 </body>

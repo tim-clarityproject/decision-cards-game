@@ -297,7 +297,7 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/">Home</a> / <a href="/stakeholder-cards">Stakeholder Actions for Round 1</a> / Card <%= card.id %>
+            <a href="/">Home</a> <% if (roundNumber) { %> / <a href="/round/<%= roundNumber %>">Round <%= roundNumber %></a> / <a href="/round/<%= roundNumber %>/stakeholder-actions">Stakeholder Actions for Round <%= roundNumber %></a><% } else { %> / <a href="/stakeholder-cards">Stakeholder Actions for Round 1</a><% } %> / Card <%= card.id %>
         </div>
 
         <h1><%= card.title %></h1>
@@ -309,9 +309,15 @@
 
         <div class="actions">
             <% if (authenticated) { %>
-                <a href="/stakeholder-cards/<%= card.id %>/results" class="action-btn view-results">
-                    <span class="lock-icon">🔓</span>View Results
-                </a>
+                <% if (roundNumber) { %>
+                    <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= card.id %>/results" class="action-btn view-results">
+                        <span class="lock-icon">🔓</span>View Results
+                    </a>
+                <% } else { %>
+                    <a href="/stakeholder-cards/<%= card.id %>/results" class="action-btn view-results">
+                        <span class="lock-icon">🔓</span>View Results
+                    </a>
+                <% } %>
             <% } else { %>
                 <a href="/login" class="action-btn view-results locked">
                     <span class="lock-icon">🔒</span>Results Locked - Sign In First
@@ -322,18 +328,32 @@
 
         <div class="navigation">
             <% if (prevId) { %>
-                <a href="/stakeholder-cards/<%= prevId %>" class="nav-btn">← Card <%= prevId %></a>
+                <% if (roundNumber) { %>
+                    <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= prevId %>" class="nav-btn">← Card <%= prevId %></a>
+                <% } else { %>
+                    <a href="/stakeholder-cards/<%= prevId %>" class="nav-btn">← Card <%= prevId %></a>
+                <% } %>
             <% } else { %>
                 <div style="grid-column: 1;"></div>
             <% } %>
             <% if (nextId) { %>
-                <a href="/stakeholder-cards/<%= nextId %>" class="nav-btn">Card <%= nextId %> →</a>
+                <% if (roundNumber) { %>
+                    <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= nextId %>" class="nav-btn">Card <%= nextId %> →</a>
+                <% } else { %>
+                    <a href="/stakeholder-cards/<%= nextId %>" class="nav-btn">Card <%= nextId %> →</a>
+                <% } %>
             <% } else { %>
                 <div style="grid-column: 2;"></div>
             <% } %>
-            <a href="/stakeholder-cards" class="nav-btn">Back to Stakeholder Actions</a>
-            <a href="/staff-cards" class="nav-btn">Go to Team Actions</a>
-            <a href="/" class="nav-btn home-link">← Home</a>
+            <% if (roundNumber) { %>
+                <a href="/round/<%= roundNumber %>/stakeholder-actions" class="nav-btn">Back to Stakeholder Actions</a>
+                <a href="/round/<%= roundNumber %>/team-actions" class="nav-btn">Go to Team Actions</a>
+                <a href="/round/<%= roundNumber %>" class="nav-btn home-link">← Back to Round <%= roundNumber %></a>
+            <% } else { %>
+                <a href="/stakeholder-cards" class="nav-btn">Back to Stakeholder Actions</a>
+                <a href="/staff-cards" class="nav-btn">Go to Team Actions</a>
+                <a href="/" class="nav-btn home-link">← Home</a>
+            <% } %>
         </div>
     </div>
 </body>

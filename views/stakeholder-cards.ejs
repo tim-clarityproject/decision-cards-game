@@ -220,15 +220,20 @@
     <div class="container">
         <div class="header">
             <div class="breadcrumb">
-                <a href="/">Home</a> / Stakeholder Actions for Round 1
+                <a href="/">Home</a> <% if (roundNumber) { %> / <a href="/round/<%= roundNumber %>">Round <%= roundNumber %></a><% } %> / Stakeholder Actions for Round <%= roundNumber || 1 %>
             </div>
-            <h1>👥 Stakeholder Actions for Round 1</h1>
+            <h1>👥 Stakeholder Actions for Round <%= roundNumber || 1 %></h1>
             <p class="subtitle">Stakeholder Perspective Scenarios</p>
         </div>
 
         <div class="top-nav">
-            <a href="/staff-cards" class="nav-btn">Team Actions for Round 1</a>
-            <a href="/stakeholder-cards" class="nav-btn active">Stakeholder Actions for Round 1</a>
+            <% if (roundNumber) { %>
+                <a href="/round/<%= roundNumber %>/team-actions" class="nav-btn">Team Actions for Round <%= roundNumber %></a>
+                <a href="/round/<%= roundNumber %>/stakeholder-actions" class="nav-btn active">Stakeholder Actions for Round <%= roundNumber %></a>
+            <% } else { %>
+                <a href="/staff-cards" class="nav-btn">Team Actions for Round 1</a>
+                <a href="/stakeholder-cards" class="nav-btn active">Stakeholder Actions for Round 1</a>
+            <% } %>
         </div>
 
         <div class="cards-grid">
@@ -236,7 +241,11 @@
                 <div class="card">
                     <div class="card-number"><%= card.id %></div>
                     <div class="card-title"><%= card.title %></div>
-                    <a href="/stakeholder-cards/<%= card.id %>" class="card-link">View Card</a>
+                    <% if (roundNumber) { %>
+                        <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= card.id %>" class="card-link">View Card</a>
+                    <% } else { %>
+                        <a href="/stakeholder-cards/<%= card.id %>" class="card-link">View Card</a>
+                    <% } %>
                 </div>
             <% }); %>
         </div>

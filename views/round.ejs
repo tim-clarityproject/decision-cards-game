@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leadership Simulation Decision Cards</title>
+    <title>Round <%= roundNumber %> - Leadership Simulation</title>
     <style>
         @font-face {
             font-family: 'Nekst';
@@ -37,6 +37,21 @@
         .header {
             text-align: center;
             margin-bottom: 60px;
+        }
+
+        .breadcrumb {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #2C5F7F;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
         }
 
         h1 {
@@ -86,45 +101,20 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
-        .auth-section {
-            padding-top: 40px;
-            border-top: 1px solid #E8E8E8;
-            margin-top: 40px;
+        .back-link {
             text-align: center;
+            margin-top: 40px;
         }
 
-        .auth-btn {
-            padding: 14px 40px;
-            background: #2C5F7F;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.2s;
+        .back-link a {
+            color: #5C9D8F;
             text-decoration: none;
-            display: inline-block;
-            font-family: 'Nekst', sans-serif;
             font-weight: 400;
+            transition: color 0.2s;
         }
 
-        .auth-btn:hover {
-            background: #1F4560;
-            transform: translateY(-2px);
-        }
-
-        .logout-btn {
-            background: #5C9D8F;
-        }
-
-        .logout-btn:hover {
-            background: #457B6B;
-        }
-
-        .status {
-            margin-bottom: 20px;
-            font-size: 0.95em;
-            color: #666;
+        .back-link a:hover {
+            color: #457B6B;
         }
 
         @media (max-width: 768px) {
@@ -153,11 +143,6 @@
             .card-link {
                 padding: 24px;
                 font-size: 1.1em;
-            }
-
-            .auth-btn {
-                padding: 12px 32px;
-                font-size: 0.95em;
             }
         }
 
@@ -188,44 +173,27 @@
                 padding: 20px;
                 font-size: 1em;
             }
-
-            .auth-section {
-                padding-top: 30px;
-                margin-top: 30px;
-            }
-
-            .auth-btn {
-                padding: 12px 28px;
-                font-size: 0.9em;
-            }
-
-            .status {
-                font-size: 0.9em;
-            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Leadership Simulation</h1>
+        <div class="breadcrumb">
+            <a href="/">Home</a> / Round <%= roundNumber %>
+        </div>
+        <h1>Round <%= roundNumber %></h1>
+        <p class="subtitle">Leadership Simulation</p>
     </div>
 
     <div class="container">
         <div class="card-links">
-            <a href="/round/1" class="card-link">🎯 Round 1</a>
-            <a href="/round/2" class="card-link">🎯 Round 2</a>
-            <a href="/round/3" class="card-link">🎯 Round 3</a>
+            <a href="/round/<%= roundNumber %>/team-actions" class="card-link">📋 Team Actions for Round <%= roundNumber %></a>
+            <a href="/round/<%= roundNumber %>/stakeholder-actions" class="card-link">👥 Stakeholder Actions for Round <%= roundNumber %></a>
         </div>
+    </div>
 
-        <div class="auth-section">
-            <% if (authenticated) { %>
-                <p class="status">✅ You have access to results</p>
-                <a href="/logout" class="auth-btn logout-btn">Sign Out</a>
-            <% } else { %>
-                <p class="status">🔒 Results are password protected</p>
-                <a href="/login" class="auth-btn">Sign In for Results</a>
-            <% } %>
-        </div>
+    <div class="back-link">
+        <a href="/">← Back to Leadership Simulation</a>
     </div>
 </body>
 </html>
