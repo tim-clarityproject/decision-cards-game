@@ -85,7 +85,7 @@ app.get('/logout', (req, res) => {
 
 // STAFF CARDS DIRECTORY
 app.get('/staff-cards', (req, res) => {
-  res.render('staff-directory', { cards: staffCards, authenticated: req.session.authenticated });
+  res.render('staff-cards', { cards: staffCards, authenticated: req.session.authenticated });
 });
 
 // INDIVIDUAL STAFF CARD PAGES
@@ -115,7 +115,7 @@ app.get('/staff-cards/:id/results', requireAuth, (req, res) => {
 
 // STAKEHOLDER CARDS DIRECTORY
 app.get('/stakeholder-cards', (req, res) => {
-  res.render('stakeholder-directory', { cards: stakeholderCards, authenticated: req.session.authenticated });
+  res.render('stakeholder-cards', { cards: stakeholderCards, authenticated: req.session.authenticated });
 });
 
 // INDIVIDUAL STAKEHOLDER CARD PAGES
