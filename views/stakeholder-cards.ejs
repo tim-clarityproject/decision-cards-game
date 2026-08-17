@@ -98,6 +98,19 @@
             color: white;
         }
 
+        .selection-counter {
+            color: #666;
+            font-size: 0.95em;
+            font-weight: 400;
+            margin-left: auto;
+            padding-right: 10px;
+        }
+
+        #selectionCount {
+            font-weight: 600;
+            color: #2C5F7F;
+        }
+
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -277,6 +290,9 @@
                 <a href="/staff-cards" class="nav-btn">Team Actions</a>
                 <a href="/stakeholder-cards" class="nav-btn active">Stakeholder Actions</a>
             <% } %>
+            <div class="selection-counter">
+                <span id="selectionCount">0</span> / <span id="totalCount"><%= cards.length %></span> selected
+            </div>
         </div>
 
         <div class="cards-grid">
@@ -300,6 +316,16 @@
     </div>
 
     <script>
+        function updateSelectionCount() {
+            let count = 0;
+            document.querySelectorAll('.card').forEach(card => {
+                if (card.classList.contains('selected')) {
+                    count++;
+                }
+            });
+            document.getElementById('selectionCount').textContent = count;
+        }
+
         function toggleCardSelection(toggleBtn) {
             const card = toggleBtn.closest('.card');
             const cardNumber = card.getAttribute('data-card-id');
@@ -315,6 +341,7 @@
                 card.classList.add('selected');
                 toggleBtn.textContent = '☑';
             }
+            updateSelectionCount();
         }
 
         document.querySelectorAll('.card').forEach(card => {
@@ -326,6 +353,7 @@
                 card.querySelector('.card-toggle').textContent = '☑';
             }
         });
+        updateSelectionCount();
     </script>
 </body>
 </html>
