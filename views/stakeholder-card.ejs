@@ -94,6 +94,30 @@
             font-weight: 400;
             font-family: 'Nekst', sans-serif;
             transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .select-btn {
+            background: #F0F0F0;
+            color: #2C5F7F;
+        }
+
+        .select-btn:hover {
+            background: #E0E0E0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .select-btn.selected {
+            background: #5C9D8F;
+            color: white;
+        }
+
+        .select-btn.selected:hover {
+            background: #457B6B;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(92, 157, 143, 0.2);
         }
 
         .view-results {
@@ -308,6 +332,9 @@
         </div>
 
         <div class="actions">
+            <button id="selectBtn" class="action-btn select-btn" onclick="toggleSelection()">
+                <span id="selectIcon">☐</span> <span id="selectText">Mark as Selected</span>
+            </button>
             <% if (roundNumber) { %>
                 <a href="/round/<%= roundNumber %>/stakeholder-actions/<%= card.id %>/results" class="action-btn view-results">
                     <span class="lock-icon">🔓</span>View Results
@@ -318,6 +345,41 @@
                 </a>
             <% } %>
         </div>
+
+        <script>
+            const cardKey = 'card_<%= roundNumber || 1 %>_stakeholder_<%= card.id %>';
+
+            function toggleSelection() {
+                const selected = localStorage.getItem(cardKey);
+                if (selected) {
+                    localStorage.removeItem(cardKey);
+                    updateButton(false);
+                } else {
+                    localStorage.setItem(cardKey, 'true');
+                    updateButton(true);
+                }
+            }
+
+            function updateButton(isSelected) {
+                const btn = document.getElementById('selectBtn');
+                const icon = document.getElementById('selectIcon');
+                const text = document.getElementById('selectText');
+                if (isSelected) {
+                    btn.classList.add('selected');
+                    icon.textContent = '☑';
+                    text.textContent = 'Selected';
+                } else {
+                    btn.classList.remove('selected');
+                    icon.textContent = '☐';
+                    text.textContent = 'Mark as Selected';
+                }
+            }
+
+            window.addEventListener('load', () => {
+                const isSelected = localStorage.getItem(cardKey);
+                updateButton(!!isSelected);
+            });
+        </script>
 
         <div class="navigation">
             <% if (prevId) { %>

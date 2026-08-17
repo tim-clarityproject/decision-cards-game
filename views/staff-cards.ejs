@@ -119,6 +119,16 @@
             transform: translateY(-2px);
         }
 
+        .card.selected {
+            background: #E8F5F2;
+            border-color: #5C9D8F;
+            box-shadow: 0 2px 12px rgba(92, 157, 143, 0.15);
+        }
+
+        .card.selected:hover {
+            box-shadow: 0 4px 16px rgba(92, 157, 143, 0.25);
+        }
+
         .card-number {
             display: inline-flex;
             align-items: center;
@@ -254,5 +264,15 @@
             <a href="/">← Back to Home</a>
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            const cardNumber = card.querySelector('.card-number').textContent.trim();
+            const cardKey = 'card_<%= roundNumber || 1 %>_team_' + cardNumber;
+            if (localStorage.getItem(cardKey)) {
+                card.classList.add('selected');
+            }
+        });
+    </script>
 </body>
 </html>
