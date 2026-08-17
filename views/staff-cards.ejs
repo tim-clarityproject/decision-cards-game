@@ -291,7 +291,7 @@
                 <a href="/stakeholder-cards" class="nav-btn">Stakeholder Actions</a>
             <% } %>
             <div class="selection-counter">
-                <span id="selectionCount">0</span> / <span id="totalCount"><%= cards.length %></span> selected
+                <span id="selectionCount">0</span> / 4 selected
             </div>
         </div>
 
@@ -316,6 +316,8 @@
     </div>
 
     <script>
+        const TEAM_LIMIT = 4;
+
         function updateSelectionCount() {
             let count = 0;
             document.querySelectorAll('.card').forEach(card => {
@@ -336,6 +338,16 @@
                 card.classList.remove('selected');
                 toggleBtn.textContent = '☐';
             } else {
+                let selectedCount = 0;
+                document.querySelectorAll('.card.selected').forEach(c => {
+                    selectedCount++;
+                });
+
+                if (selectedCount >= TEAM_LIMIT) {
+                    alert('You are limited to 4 team actions');
+                    return;
+                }
+
                 localStorage.setItem(cardKey, 'true');
                 card.classList.add('selected');
                 toggleBtn.textContent = '☑';
