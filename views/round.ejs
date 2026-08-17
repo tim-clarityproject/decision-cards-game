@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Round <%= roundNumber %> - Leadership Simulation</title>
     <style>
-        @font-face {
-            font-family: 'Nekst';
-            src: url('/fonts/NekstRegularDesktop.otf') format('opentype');
-            font-weight: 400;
-        }
-
-        @font-face {
-            font-family: 'Nekst';
-            src: url('/fonts/NekstLightDesktop.otf') format('opentype');
-            font-weight: 300;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -24,7 +12,7 @@
         }
 
         body {
-            font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background: #FAFAFA;
             min-height: 100vh;
             display: flex;
@@ -43,11 +31,13 @@
             color: #666;
             font-size: 0.95em;
             margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .breadcrumb a {
-            color: #2C5F7F;
+            color: #1A1A1A;
             text-decoration: none;
+            font-weight: 600;
         }
 
         .breadcrumb a:hover {
@@ -58,15 +48,15 @@
             color: #1A1A1A;
             margin-bottom: 12px;
             font-size: 3.5em;
-            font-weight: 400;
+            font-weight: 700;
             line-height: 1.1;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             color: #666;
             font-size: 1.2em;
-            font-weight: 300;
+            font-weight: 400;
             margin-bottom: 20px;
         }
 
@@ -84,21 +74,23 @@
 
         .card-link {
             display: block;
-            padding: 32px;
-            background: white;
-            color: #1A1A1A;
+            padding: 24px 32px;
+            background: #1A1A1A;
+            color: white;
             text-decoration: none;
-            border-radius: 4px;
-            font-size: 1.3em;
-            font-weight: 400;
-            transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #E8E8E8;
+            border-radius: 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: none;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .card-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: none;
+            background: #333;
         }
 
         .back-link {
@@ -107,14 +99,14 @@
         }
 
         .back-link a {
-            color: #5C9D8F;
+            color: #1A1A1A;
             text-decoration: none;
-            font-weight: 400;
+            font-weight: 600;
             transition: color 0.2s;
         }
 
         .back-link a:hover {
-            color: #457B6B;
+            color: #333;
         }
 
         @media (max-width: 768px) {
@@ -187,24 +179,24 @@
 
     <div class="container">
         <div class="card-links">
-            <a href="/round/<%= roundNumber %>/team-actions" class="card-link">📋 Team Actions for Round <%= roundNumber %></a>
-            <a href="/round/<%= roundNumber %>/stakeholder-actions" class="card-link">👥 Stakeholder Actions for Round <%= roundNumber %></a>
+            <a href="/round/<%= roundNumber %>/team-actions" class="card-link">Team Actions for Round <%= roundNumber %></a>
+            <a href="/round/<%= roundNumber %>/stakeholder-actions" class="card-link">Stakeholder Actions for Round <%= roundNumber %></a>
         </div>
 
-        <div style="background: white; border: 1px solid #E8E8E8; border-radius: 4px; padding: 30px; margin-top: 40px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+        <div style="background: white; border: 1px solid #E8E8E8; border-radius: 0; padding: 30px; margin-top: 40px; text-align: center; box-shadow: none;">
             <% if (authenticatedRounds && authenticatedRounds.includes(roundNumber)) { %>
-                <p style="color: #5C9D8F; font-size: 1em; margin: 0;">✓ Results unlocked for this round</p>
+                <p style="color: #1A1A1A; font-size: 1em; margin: 0; font-weight: 600;">Results Unlocked</p>
             <% } else { %>
-                <h3 style="color: #1A1A1A; font-size: 1.2em; margin-bottom: 20px; font-weight: 400;">Unlock Results</h3>
+                <h3 style="color: #1A1A1A; font-size: 1.2em; margin-bottom: 20px; font-weight: 600;">Unlock Results</h3>
                 <form method="POST" action="/login" style="max-width: 300px; margin: 0 auto;">
                     <% if (error) { %>
-                        <div style="background: #FDE8E8; border: 1px solid #F0C4C4; color: #C44545; padding: 12px; border-radius: 4px; margin-bottom: 16px; font-size: 0.95em;">
+                        <div style="background: #FDE8E8; border: 1px solid #F0C4C4; color: #C44545; padding: 12px; border-radius: 0; margin-bottom: 16px; font-size: 0.95em;">
                             <%= error %>
                         </div>
                     <% } %>
                     <input type="hidden" name="round" value="<%= roundNumber %>">
-                    <input type="password" name="password" placeholder="Enter password" required style="width: 100%; padding: 12px; border: 1px solid #D8D8D8; border-radius: 4px; font-size: 1em; font-family: 'Nekst', sans-serif; margin-bottom: 12px; background: #FAFAFA;">
-                    <button type="submit" style="width: 100%; padding: 12px; background: #2C5F7F; color: white; border: none; border-radius: 4px; font-size: 1em; cursor: pointer; font-family: 'Nekst', sans-serif; font-weight: 400; transition: all 0.2s;" onmouseover="this.style.background='#1F4560'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#2C5F7F'; this.style.transform='translateY(0)';">Unlock Results</button>
+                    <input type="password" name="password" placeholder="Enter password" required style="width: 100%; padding: 12px; border: 1px solid #D8D8D8; border-radius: 0; font-size: 1em; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-bottom: 12px; background: #FAFAFA;">
+                    <button type="submit" style="width: 100%; padding: 14px; background: #1A1A1A; color: white; border: none; border-radius: 0; font-size: 0.95em; cursor: pointer; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; transition: all 0.3s; text-transform: uppercase; letter-spacing: 0.5px;" onmouseover="this.style.background='#333';" onmouseout="this.style.background='#1A1A1A';">Unlock Results</button>
                 </form>
             <% } %>
         </div>

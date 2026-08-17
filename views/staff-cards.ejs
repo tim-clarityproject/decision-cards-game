@@ -5,17 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Cards - Leadership Simulation</title>
     <style>
-        @font-face {
-            font-family: 'Nekst';
-            src: url('/fonts/NekstRegularDesktop.otf') format('opentype');
-            font-weight: 400;
-        }
-
-        @font-face {
-            font-family: 'Nekst';
-            src: url('/fonts/NekstLightDesktop.otf') format('opentype');
-            font-weight: 300;
-        }
 
         * {
             margin: 0;
@@ -24,7 +13,7 @@
         }
 
         body {
-            font-family: 'Nekst', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background: #FAFAFA;
             min-height: 100vh;
             padding: 40px 20px;
@@ -47,8 +36,9 @@
         }
 
         .breadcrumb a {
-            color: #2C5F7F;
+            color: #1A1A1A;
             text-decoration: none;
+            font-weight: 600;
         }
 
         .breadcrumb a:hover {
@@ -59,14 +49,14 @@
             color: #1A1A1A;
             font-size: 2.5em;
             margin-bottom: 15px;
-            font-weight: 400;
+            font-weight: 700;
             line-height: 1.2;
         }
 
         .subtitle {
             color: #666;
             font-size: 1.1em;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .top-nav {
@@ -81,12 +71,15 @@
         .nav-btn {
             padding: 12px 24px;
             background: #f0f0f0;
-            color: #2C5F7F;
+            color: #1A1A1A;
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: 400;
-            font-family: 'Nekst', sans-serif;
-            transition: background 0.2s;
+            border-radius: 0;
+            font-weight: 600;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.3px;
         }
 
         .nav-btn:hover {
@@ -94,7 +87,7 @@
         }
 
         .nav-btn.active {
-            background: #2C5F7F;
+            background: #1A1A1A;
             color: white;
         }
 
@@ -218,14 +211,14 @@
         }
 
         .back-link a {
-            color: #5C9D8F;
+            color: #1A1A1A;
             text-decoration: none;
-            font-weight: 400;
+            font-weight: 600;
             transition: color 0.2s;
         }
 
         .back-link a:hover {
-            color: #457B6B;
+            color: #333;
         }
 
         @media (max-width: 768px) {
@@ -361,7 +354,7 @@
             <div class="breadcrumb">
                 <a href="/">Home</a> <% if (roundNumber) { %> / <a href="/round/<%= roundNumber %>">Round <%= roundNumber %></a><% } %> / Team Actions for Round <%= roundNumber || 1 %>
             </div>
-            <h1>📋 Team Actions for Round <%= roundNumber || 1 %></h1>
+            <h1>Team Actions for Round <%= roundNumber || 1 %></h1>
             <p class="subtitle">Team Perspective Scenarios</p>
         </div>
 
