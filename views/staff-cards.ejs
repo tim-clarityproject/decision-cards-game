@@ -112,6 +112,7 @@
             padding: 24px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             transition: all 0.2s;
+            position: relative;
         }
 
         .card:hover {
@@ -127,6 +128,38 @@
 
         .card.selected:hover {
             box-shadow: 0 4px 16px rgba(92, 157, 143, 0.25);
+        }
+
+        .card-toggle {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background: #F0F0F0;
+            border: 1px solid #D8D8D8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.2s;
+        }
+
+        .card-toggle:hover {
+            background: #E0E0E0;
+            transform: scale(1.1);
+        }
+
+        .card.selected .card-toggle {
+            background: #5C9D8F;
+            border-color: #5C9D8F;
+            color: white;
+        }
+
+        .card.selected .card-toggle:hover {
+            background: #457B6B;
         }
 
         .card-number {
@@ -248,7 +281,8 @@
 
         <div class="cards-grid">
             <% cards.forEach(card => { %>
-                <div class="card">
+                <div class="card" data-card-id="<%= card.id %>" data-card-type="team">
+                    <div class="card-toggle" onclick="event.stopPropagation(); toggleCardSelection(this)">☐</div>
                     <div class="card-number"><%= card.id %></div>
                     <div class="card-title"><%= card.title %></div>
                     <% if (roundNumber) { %>
@@ -266,11 +300,28 @@
     </div>
 
     <script>
+        function toggleCardSelection(toggleBtn) {
+            const card = toggleBtn.closest('.card');
+            const cardNumber = card.getAttribute('data-card-id');
+            const cardKey = 'card_<%= roundNumber || 1 %>_team_' + cardNumber;
+
+            if (localStorage.getItem(cardKey)) {
+                localStorage.removeItem(cardKey);
+                card.classList.remove('selected');
+                toggleBtn.textContent = '☐';
+            } else {
+                localStorage.setItem(cardKey, 'true');
+                card.classList.add('selected');
+                toggleBtn.textContent = '☑';
+            }
+        }
+
         document.querySelectorAll('.card').forEach(card => {
-            const cardNumber = card.querySelector('.card-number').textContent.trim();
+            const cardNumber = card.getAttribute('data-card-id');
             const cardKey = 'card_<%= roundNumber || 1 %>_team_' + cardNumber;
             if (localStorage.getItem(cardKey)) {
                 card.classList.add('selected');
+                card.querySelector('.card-toggle').textContent = '☑';
             }
         });
     </script>
