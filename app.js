@@ -25,7 +25,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     secure: false, // Set to true if using HTTPS in production
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    maxAge: 30 * 60 * 1000 // 30 minutes
   }
 }));
 
@@ -49,7 +49,7 @@ const cardsByRound = {
         id: 3,
         title: 'Here\'s What We Will Do',
         scenario: 'I gather all the team members physically or virtually for a full day\'s meeting where I present my vision, goals and KPIs for our team.\n\nBy clarifying goals and plans I ensure that the team members have a shared point of departure, and feel that things are under control.\n\nPay one business trip if you choose to travel to meet in person.',
-        results: 'Presenting detailed plans is most effective if you have already created good working relationships. Team members with fair or strong Trust get Alignment +1. Some team members prefer such briefings to be in person, while others react to your authoritative approach to planning. Hierarchical get Trust +1, but Consensual get Trust -1. If the meeting was not face-to-face, Relationship-oriented also get Trust -1.'
+        results: 'Presenting detailed plans is most effective if you have already created good working relationships. Team members with fair or strong Trust get Alignment +1. Some team members prefer such briefings to be in person, while others react to your authoritative approach to planning. Hierarchical get Trust +1. Consensual get Trust -1. If the meeting was not face-to-face, Relationship-oriented also get Trust -1.'
       },
       {
         id: 4,
@@ -91,7 +91,7 @@ const cardsByRound = {
         id: 10,
         title: 'This is Your Job',
         scenario: 'I carefully write job descriptions for all team members stating their personal responsibilities, goals and KPIs.\n\nI share the job descriptions with the whole team in order for everyone to understand how roles and responsibilities are defined among the team members.',
-        results: 'All team members who have understood the goals of the team appreciate the clear directions. Team members who have strong or fair Alignment get Autonomy +1. Some feel that you have truly stepped up as a leader, while others see your leadership approach as authoritarian and would have liked to be involved in designing their own job. Hierarchical get Trust +1, but Consensual get Trust -1.'
+        results: 'All team members who have understood the goals of the team appreciate the clear directions. Team members who have strong or fair Alignment get Autonomy +1. Some feel that you have truly stepped up as a leader, while others see your leadership approach as authoritarian and would have liked to be involved in designing their own job. Hierarchical get Trust +1. Consensual get Trust -1.'
       },
       {
         id: 11,
@@ -199,7 +199,7 @@ const cardsByRound = {
         id: 11,
         title: 'Your Contribution',
         scenario: 'I visit one of the business centres and run a customised workshop where we work together to identify each team member\'s contribution to the team on meeting the new client\'s needs.\n\nI make it an open and democratic process and I invite the participants to comment on both their own and each others\' roles.\n\nPay one business trip if you choose to travel to remote business centres.\n\nSelect one business center:',
-        results: 'The format lets you address needs and clear up misunderstandings on individual responsibilities and corporate standards. All team members get Alignment +1. Some team members get a strong understanding of the connection between corporate goals and their own tasks. Others find the format invasive and intimidating. Consensual, Individualistic and Direct team members get Autonomy +1, but Indirect and Hierarchical team members get Trust -1.'
+        results: 'The format lets you address needs and clear up misunderstandings on individual responsibilities and corporate standards. All team members get Alignment +1. Some team members get a strong understanding of the connection between corporate goals and their own tasks. Others find the format invasive and intimidating. Consensual, Individualistic and Direct team members get Autonomy +1. Indirect and Hierarchical team members get Trust -1.'
       },
       {
         id: 12,
@@ -301,7 +301,7 @@ const cardsByRound = {
         id: 11,
         title: 'Remember Our Standards',
         scenario: 'Whenever I communicate with my team, I make sure to highlight the corporate quality standards that we must comply with.\n\nI do this to create a clear and shared understanding of what is expected from us by global management.',
-        results: 'The continued reinforcement of the quality standards helps your team members understand what is expected of them. All team members get Alignment +1. Some team members react even better to your clear message. Others feel trapped and demotivated by the rigid focus on compliance and getting the procedures exactly right. Hierarchical and Structured team members get Autonomy +1, but Flexible and Individualistic get Trust -1.'
+        results: 'The continued reinforcement of the quality standards helps your team members understand what is expected of them. All team members get Alignment +1. Some team members react even better to your clear message. Others feel trapped and demotivated by the rigid focus on compliance and getting the procedures exactly right. Hierarchical and Structured team members get Autonomy +1. Flexible and Individualistic get Trust -1.'
       },
       {
         id: 12,
@@ -315,7 +315,7 @@ const cardsByRound = {
         id: 1,
         title: 'Taking Over',
         scenario: 'I talk to the company COO and ask him for a mandate to take a more centralised approach to data quality in order to address the quality crisis.\n\nI am hoping that this initiative can help improve data quality in the company and that it will strengthen my position without alienating too many stakeholders.',
-        results: 'The COO accepts your proposal and lets all stakeholders know that you have been asked to bring the house in order. This helps create clarity about your role. All stakeholders get Alignment +1. Some stakeholders are happy that management is backing you as a leader, but other stakeholders find the move too authoritarian and are uncertain about your motives. Hierarchical stakeholders get Trust +1, but stakeholders who are Consensual get Trust -1.'
+        results: 'The COO accepts your proposal and lets all stakeholders know that you have been asked to bring the house in order. This helps create clarity about your role. All stakeholders get Alignment +1. Some stakeholders are happy that management is backing you as a leader, but other stakeholders find the move too authoritarian and are uncertain about your motives. Hierarchical stakeholders get Trust +1. Stakeholders who are Consensual get Trust -1.'
       },
       {
         id: 2,
@@ -349,13 +349,21 @@ const requireAuth = (req, res, next) => {
   if (req.session.authenticatedRounds && req.session.authenticatedRounds.includes(roundId)) {
     next();
   } else {
-    res.redirect('/');
+    // Store the intended URL to redirect after auth
+    req.session.intendedUrl = req.originalUrl;
+    res.redirect('/?requireAuth=true&round=' + roundId);
   }
 };
 
 // HOME PAGE
 app.get('/', (req, res) => {
-  res.render('home');
+  const requireAuth = req.query.requireAuth === 'true';
+  const roundId = parseInt(req.query.round) || 1;
+  res.render('home', {
+    requireAuth,
+    roundId,
+    intendedUrl: req.session.intendedUrl || null
+  });
 });
 
 // LOGIN HANDLER (posts from home page)
@@ -370,7 +378,9 @@ app.post('/login', (req, res) => {
     if (!req.session.authenticatedRounds.includes(roundId)) {
       req.session.authenticatedRounds.push(roundId);
     }
-    res.redirect('/round/' + roundId);
+    const intendedUrl = req.session.intendedUrl;
+    delete req.session.intendedUrl;
+    res.redirect(intendedUrl || '/round/' + roundId);
   } else {
     const authenticatedRounds = req.session.authenticatedRounds || [];
     res.render('round', {
