@@ -7,9 +7,9 @@ const app = express();
 // Configuration
 const PORT = process.env.PORT || 3000;
 const ROUND_PASSWORDS = {
-  1: process.env.ROUND_1_PASSWORD,
-  2: process.env.ROUND_2_PASSWORD,
-  3: process.env.ROUND_3_PASSWORD
+  1: process.env.ROUND_1_PASSWORD || 'trust',
+  2: process.env.ROUND_2_PASSWORD || 'alignment',
+  3: process.env.ROUND_3_PASSWORD || 'autonomy'
 };
 
 // Middleware
