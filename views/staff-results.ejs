@@ -301,7 +301,11 @@
                     // Extract score changes from results text
                     const scoreRegex = /([\w\s,]+)\s+get\s+(TRUST|ALIGNMENT|AUTONOMY)\s+([\+\-]\d+)/g;
                     const matches = [...card.results.matchAll(scoreRegex)];
-                    const narrative = card.results.replace(scoreRegex, '').trim();
+                    let narrative = card.results;
+                    matches.forEach(match => {
+                        narrative = narrative.replace(match[0], '');
+                    });
+                    narrative = narrative.replace(/\s+/g, ' ').trim();
                 %>
                 <p style="line-height: 1.8; margin-bottom: 25px;"><%= narrative %></p>
 
