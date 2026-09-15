@@ -43,7 +43,7 @@ const cardsByRound = {
         id: 2,
         title: 'Visit a Site',
         scenario: 'I gather my team members from one of the business centres for a workshop. Here we openly discuss and agree on goals and visions for their part of the team. Before the meeting, I discuss my plans with the local regional manager.\n\nI do this to make sure the local team members understand how they are supposed to create value for the company and for their business centre.\n\nPay one business trip if you choose to travel to remote business centres.\n\nSelect one business centre:',
-        results: 'All team members at the chosen business centre gain clarity about their mission and the visit is appreciated by the local manager as well. All team members in the chosen business centre get Alignment +1. The Regional Manager of the location also gets Alignment +1. Some team members appreciate being involved in setting goals, while others see your open style as a sign of weakness. Consensual and Direct get Trust +1, but Hierarchical get Trust -1.'
+        results: 'All team members at the chosen business centre gain clarity about their mission and the visit is appreciated by the local manager as well. All team members in the chosen business centre get Alignment +1. The Regional Manager of the location also gets Alignment +1. Some team members appreciate being involved in setting goals, while others see your open style as a sign of weakness. Consensual and Direct get Trust +1. Hierarchical get Trust -1.'
       },
       {
         id: 3,
