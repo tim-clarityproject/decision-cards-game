@@ -6,6 +6,7 @@ const app = express();
 
 // Configuration
 const PORT = process.env.PORT || 3000;
+const FRONT_PAGE_PASSWORD = process.env.FRONT_PAGE_PASSWORD || 'access';
 const ROUND_PASSWORDS = {
   1: process.env.ROUND_1_PASSWORD || 'trust',
   2: process.env.ROUND_2_PASSWORD || 'alignment',
@@ -25,7 +26,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     secure: false, // Set to true if using HTTPS in production
-    maxAge: 30 * 60 * 1000 // 30 minutes
+    maxAge: 48 * 60 * 60 * 1000 // 48 hours
   }
 }));
 
@@ -343,6 +344,15 @@ const cardsByRound = {
 const staffCards = cardsByRound[1].team;
 const stakeholderCards = cardsByRound[1].stakeholder;
 
+// Middleware to check front page access
+const requireFrontPageAccess = (req, res, next) => {
+  if (req.session.frontPageAuthenticated) {
+    next();
+  } else {
+    res.redirect('/access');
+  }
+};
+
 // Middleware to check if user is authenticated for a specific round
 const requireAuth = (req, res, next) => {
   const roundId = parseInt(req.params.roundId) || 1;
@@ -355,8 +365,24 @@ const requireAuth = (req, res, next) => {
   }
 };
 
-// HOME PAGE
-app.get('/', (req, res) => {
+// FRONT PAGE ACCESS (no auth required)
+app.get('/access', (req, res) => {
+  res.render('access');
+});
+
+// FRONT PAGE ACCESS HANDLER
+app.post('/access-login', (req, res) => {
+  const { password } = req.body;
+  if (password === FRONT_PAGE_PASSWORD) {
+    req.session.frontPageAuthenticated = true;
+    res.redirect('/');
+  } else {
+    res.render('access', { error: 'Invalid password' });
+  }
+});
+
+// HOME PAGE (requires front page access)
+app.get('/', requireFrontPageAccess, (req, res) => {
   const requireAuth = req.query.requireAuth === 'true';
   const roundId = parseInt(req.query.round) || 1;
   res.render('home', {
@@ -394,7 +420,8 @@ app.post('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
   req.session.authenticatedRounds = [];
-  res.redirect('/');
+  req.session.frontPageAuthenticated = false;
+  res.redirect('/access');
 });
 
 // STAFF CARDS DIRECTORY

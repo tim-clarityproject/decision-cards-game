@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access - Leadership Simulation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2C3E50 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .access-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1A1A1A;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .access-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #D8D8D8;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            transition: all 0.3s;
+        }
+
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #2C5F7F;
+            box-shadow: 0 0 0 3px rgba(44, 95, 127, 0.1);
+        }
+
+        button {
+            padding: 14px 20px;
+            background: #1A1A1A;
+            color: white;
+            border: none;
+            border-radius: 0;
+            font-size: 0.95em;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .error-message {
+            color: #E74C3C;
+            font-size: 0.9em;
+            padding: 12px;
+            background: #FADBD8;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .info-text {
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #E8E8E8;
+        }
+
+        @media (max-width: 480px) {
+            .access-container {
+                padding: 40px 24px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 12px;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+                margin-bottom: 25px;
+            }
+
+            input[type="password"] {
+                padding: 12px 14px;
+                font-size: 16px;
+            }
+
+            button {
+                padding: 12px 16px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="access-container">
+        <h1>Leadership Simulation</h1>
+        <p class="subtitle">Enter the access password to begin the simulation</p>
+
+        <% if (error) { %>
+            <div class="error-message">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form method="POST" action="/access-login" class="access-form">
+            <input
+                type="password"
+                name="password"
+                placeholder="Access Password"
+                required
+                autofocus
+            >
+            <button type="submit">Access Simulation</button>
+        </form>
+
+        <div class="info-text">
+            This simulation will be accessible for 48 hours from your initial login.
+        </div>
+    </div>
+</body>
+</html>
