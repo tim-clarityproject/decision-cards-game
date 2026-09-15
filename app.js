@@ -55,7 +55,7 @@ const cardsByRound = {
         id: 4,
         title: 'Breaking Bread',
         scenario: 'I gather the entire team for a team building event where we can get to know each other and each person\'s individual strengths.\n\nI keep the main emphasis on social aspects in order to build up the team and allow relations to form. We also spend some time discussing our individual preferences in collaboration.\n\nPay one business trip.',
-        results: 'The team building event is well received. Everyone appreciates the opportunity to socialise and spirits are high at the end of the event. All team members get Trust +1. Relation-oriented team members consider it extremely important to develop personal relations before embarking on the daily work. Relationship-oriented get an extra Trust +1.'
+        results: 'The team building event is well received. Everyone appreciates the opportunity to socialise and spirits are high at the end of the event. All team members get Trust +1. Relationship-oriented team members consider it extremely important to develop personal relations before embarking on the daily work. Relationship-oriented get an extra Trust +1.'
       },
       {
         id: 5,
@@ -241,7 +241,7 @@ const cardsByRound = {
         id: 1,
         title: 'Crisis Meeting',
         scenario: 'In view of the crisis, I gather the team, outline the situation and stress the importance of Global Analytics in addressing the issue.\n\nI make it clear that each team member is expected to be a part of the solution.\n\nPay one business trip.',
-        results: 'All team members understand the gravity of the situation and appreciate your trust in their ability to come up with individual solutions. All team members get Autonomy +1. Some feel stressed by the additional demands and frustrated by your lack of direction. Team members with weak or fair Alignment get Trust -1'
+        results: 'All team members understand the gravity of the situation and appreciate your trust in their ability to come up with individual solutions. All team members get Autonomy +1. Some feel stressed by the additional demands and frustrated by your lack of direction. Team members with weak or fair Alignment get Trust -1.'
       },
       {
         id: 2,
@@ -295,7 +295,7 @@ const cardsByRound = {
         id: 10,
         title: 'Do the Right Things',
         scenario: 'I arrange meetings with one or more local teams where I clarify what is important right now and what they should focus on. I do this in a friendly but firm way that leaves little room for misunderstandings.\n\nI want to make sure that my expectations are well understood, and stop local initiatives that I think is less important.\n\nPay one business trip if you choose to travel to remote business centres.\n\nSelect business centres:',
-        results: 'The team members get a much bet- ter understanding of your priorities and expectations. Your direct approach also makes them less likely to take local initiative. Team members from the selected locations get Alignment +2 and Autonomy -1. Your commanding leadership style does not work as well if conducted virtually, as this leaves little room for your team members to respond. If the meeting is not done in person, team members who are Consensual, Indirect or Flexible get Trust -1.'
+        results: 'The team members get a much better understanding of your priorities and expectations. Your direct approach also makes them less likely to take local initiative. Team members from the selected locations get Alignment +2 and Autonomy -1. Your commanding leadership style does not work as well if conducted virtually, as this leaves little room for your team members to respond. If the meeting is not done in person, team members who are Consensual, Indirect or Flexible get Trust -1.'
       },
       {
         id: 11,
@@ -389,7 +389,7 @@ app.get('/logout', (req, res) => {
 
 // STAFF CARDS DIRECTORY
 app.get('/staff-cards', (req, res) => {
-  res.render('staff-cards', { cards: staffCards, authenticated: req.session.authenticated });
+  res.render('staff-cards', { cards: staffCards, authenticated: req.session.authenticated, roundNumber: 1 });
 });
 
 // INDIVIDUAL STAFF CARD PAGES
@@ -400,6 +400,7 @@ app.get('/staff-cards/:id', (req, res) => {
   res.render('staff-card', {
     card,
     authenticated: req.session.authenticated,
+    roundNumber: 1,
     nextId: card.id < 12 ? card.id + 1 : null,
     prevId: card.id > 1 ? card.id - 1 : null
   });
@@ -419,7 +420,7 @@ app.get('/staff-cards/:id/results', requireAuth, (req, res) => {
 
 // STAKEHOLDER CARDS DIRECTORY
 app.get('/stakeholder-cards', (req, res) => {
-  res.render('stakeholder-cards', { cards: stakeholderCards, authenticated: req.session.authenticated });
+  res.render('stakeholder-cards', { cards: stakeholderCards, authenticated: req.session.authenticated, roundNumber: 1 });
 });
 
 // INDIVIDUAL STAKEHOLDER CARD PAGES
@@ -430,6 +431,7 @@ app.get('/stakeholder-cards/:id', (req, res) => {
   res.render('stakeholder-card', {
     card,
     authenticated: req.session.authenticated,
+    roundNumber: 1,
     nextId: card.id < 4 ? card.id + 1 : null,
     prevId: card.id > 1 ? card.id - 1 : null
   });

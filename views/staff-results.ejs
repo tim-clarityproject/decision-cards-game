@@ -299,7 +299,7 @@
             <% if (card.results) { %>
                 <%
                     // Extract score changes from results text
-                    const scoreRegex = /([\w\s,]+?)\s+get\s+(TRUST|ALIGNMENT|AUTONOMY)\s+([\+\-]\d+)/g;
+                    const scoreRegex = /([\w\s,]+?)\s+get\s+(Trust|Alignment|Autonomy|TRUST|ALIGNMENT|AUTONOMY)\s+([\+\-]\d+)/g;
                     const matches = [...card.results.matchAll(scoreRegex)];
                     let narrative = card.results;
                     matches.forEach(match => {
@@ -308,17 +308,23 @@
                     // Clean up narrative: remove ellipses, extra spaces, and line breaks
                     narrative = narrative.replace(/\.{2,}/g, '.').replace(/\s+/g, ' ').replace(/\n+/g, ' ').trim();
 
-                    // Convert attribute names from CAPS to Title Case
+                    // Normalize attribute names to Title Case
                     const attrNames = {
                         'TRUST': 'Trust',
                         'ALIGNMENT': 'Alignment',
-                        'AUTONOMY': 'Autonomy'
+                        'AUTONOMY': 'Autonomy',
+                        'Trust': 'Trust',
+                        'Alignment': 'Alignment',
+                        'Autonomy': 'Autonomy'
                     };
 
                     const colors = {
                         'TRUST': '#E74C3C',
                         'ALIGNMENT': '#3498DB',
-                        'AUTONOMY': '#2ECC71'
+                        'AUTONOMY': '#2ECC71',
+                        'Trust': '#E74C3C',
+                        'Alignment': '#3498DB',
+                        'Autonomy': '#2ECC71'
                     };
                 %>
                 <p style="line-height: 1.8; margin-bottom: 25px;"><%= narrative %></p>
