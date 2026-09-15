@@ -290,11 +290,10 @@
         </div>
 
         <h1><%= card.title %> — Results</h1>
-        <p class="subtitle">Stakeholder Perspective & Outcomes</p>
 
         <div class="results-section">
             <div class="section-title">
-                <span class="section-icon">👥</span>
+                <span class="section-icon">📊</span>
                 <span>What Happened?</span>
             </div>
             <% if (card.results) { %>
@@ -303,47 +302,6 @@
                 <p><strong>[INSERT RESULTS SUMMARY]</strong></p>
                 <p>This section describes what occurred based on the decisions made by the participant. Replace this placeholder with a detailed explanation of the outcomes and consequences of the choices presented in the scenario.</p>
             <% } %>
-        </div>
-
-        <div class="results-section">
-            <div class="section-title">
-                <span class="section-icon">💡</span>
-                <span>Key Insights</span>
-            </div>
-            <% if (card.keyInsights) { %>
-                <p><%= card.keyInsights %></p>
-            <% } else { %>
-                <p><strong>[INSERT KEY LEARNING POINTS]</strong></p>
-                <p>Highlight the critical insights and lessons from this decision scenario. What patterns emerged? What were the trade-offs? What does this reveal about leadership decision-making?</p>
-            <% } %>
-        </div>
-
-        <div class="results-section">
-            <div class="section-title">
-                <span class="section-icon">🎯</span>
-                <span>Next Steps</span>
-            </div>
-            <% if (card.nextSteps) { %>
-                <p><%= card.nextSteps %></p>
-            <% } else { %>
-                <p><strong>[INSERT RECOMMENDED ACTIONS]</strong></p>
-                <p>What should participants consider or do differently based on what they learned from this scenario? How can they apply these insights to their own leadership challenges?</p>
-            <% } %>
-        </div>
-
-        <div class="results-section">
-            <div class="section-title">
-                <span class="section-icon">🔍</span>
-                <span>Reflection</span>
-            </div>
-            <div class="reflection-box">
-                <% if (card.reflection) { %>
-                    <p><strong><%= card.reflection %></strong></p>
-                <% } else { %>
-                    <p><strong>[INSERT REFLECTION PROMPT]</strong></p>
-                    <p>What personal insights did this scenario reveal about your approach to decision-making under pressure? How might you handle a similar situation differently?</p>
-                <% } %>
-            </div>
         </div>
 
         <div class="navigation">
