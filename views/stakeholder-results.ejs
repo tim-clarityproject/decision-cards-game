@@ -299,7 +299,7 @@
             <% if (card.results) { %>
                 <%
                     // Extract score changes from results text
-                    const scoreRegex = /([\w\s,]+?)\s+get\s+(Trust|Alignment|Autonomy|TRUST|ALIGNMENT|AUTONOMY)\s+([\+\-]\d+)/g;
+                    const scoreRegex = /([\w\s,]+?)\s+get\s+(?:an\s+)?(?:extra\s+)?(?:additional\s+)?(Trust|Alignment|Autonomy|TRUST|ALIGNMENT|AUTONOMY)\s+([\+\-]\d+)/g;
                     const matches = [...card.results.matchAll(scoreRegex)];
                     let narrative = card.results;
                     matches.forEach(match => {

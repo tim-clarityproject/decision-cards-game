@@ -7,9 +7,9 @@ const app = express();
 // Configuration
 const PORT = process.env.PORT || 3000;
 const ROUND_PASSWORDS = {
-  1: process.env.ROUND_1_PASSWORD || 'trust',
-  2: process.env.ROUND_2_PASSWORD || 'alignment',
-  3: process.env.ROUND_3_PASSWORD || 'autonomy'
+  1: process.env.ROUND_1_PASSWORD,
+  2: process.env.ROUND_2_PASSWORD,
+  3: process.env.ROUND_3_PASSWORD
 };
 
 // Middleware
@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Session middleware
 app.use(session({
-  secret: 'decision-cards-secret-key',
+  secret: process.env.SESSION_SECRET || 'decision-cards-secret-key',
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -37,7 +37,7 @@ const cardsByRound = {
         id: 1,
         title: 'Action Plan',
         scenario: 'I write an action plan for the first three months and send it to everyone. The plan contains ambitious goals, a detailed plan, and a description of who is to do what.\n\nI communicate this plan to the remote team members in our weekly, individual phone meetings.',
-        results: 'If you have established yourself as a leader, the team members benefit from your clear goals and plans. However, people react differently to detailed planning. Some appreciate the clarity it brings, while others feel micro managed.\n\nTeam members with fair or strong trust get Alignment +1.\nStructured team members get Autonomy +1.\nFlexible team members get Autonomy -1.'
+        results: 'If you have established yourself as a leader, the team members benefit from your clear goals and plans. However, people react differently to detailed planning. Some appreciate the clarity it brings, while others feel micromanaged.\n\nTeam members with fair or strong trust get Alignment +1.\nStructured team members get Autonomy +1.\nFlexible team members get Autonomy -1.'
       },
       {
         id: 2,
@@ -85,7 +85,7 @@ const cardsByRound = {
         id: 9,
         title: 'Socialise',
         scenario: 'I visit some or all business centres to have coffee with each individual team member and take them and their spouses out to dinner.\n\nI focus on getting to know everyone and on showing that I care about their general well-being.\n\nPay one business trip if you choose to travel to remote business centres.\n\nSelect business centres:',
-        results: 'In many cultures, personal relations come before business relations. Socialising is rarely a bad idea but in relationship-oriented cultures it is a prerequisite for getting things done. However, some might not feel that this is the most efficient way of spending time with the team. All team members except Structured get Trust +1. Relationship-oriented get an extra Trust +1.'
+        results: 'In many cultures, personal relations come before business relations. Socialising is rarely a bad idea but in Relationship-oriented cultures it is a prerequisite for getting things done. However, some might not feel that this is the most efficient way of spending time with the team. All team members except Structured get Trust +1. Relationship-oriented get an extra Trust +1.'
       },
       {
         id: 10,
@@ -157,7 +157,7 @@ const cardsByRound = {
         id: 4,
         title: 'Collaboration Across Business Centres',
         scenario: 'I delegate work related to the new client to two team members from different business centres. The rest are asked to cover for them and collaborate on existing tasks.\n\nI do this to increase collaboration and knowledge sharing and to inspire my team to take responsibility.\n\nChoose two team members:',
-        results: 'Delegation is a good way to build trust. If the team is ready for it, the cross- cultural collaboration also helps build local ownership. Both chosen team members get Trust +1. If the chosen person has strong or fair Alignment, both from the same location also get Autonomy +1. Some team members will try extra hard to follow global standards if they see the assignment as a career opportunity. If the chosen team members are Individualistic they get Alignment +1.'
+        results: 'Delegation is a good way to build trust. If the team is ready for it, the cross-cultural collaboration also helps build local ownership. Both chosen team members get Trust +1. If the chosen person has strong or fair Alignment, both from the same location also get Autonomy +1. Some team members will try extra hard to follow global standards if they see the assignment as a career opportunity. If the chosen team members are Individualistic they get Alignment +1.'
       },
       {
         id: 5,
