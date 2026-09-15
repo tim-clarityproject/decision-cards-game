@@ -37,7 +37,7 @@ const cardsByRound = {
         id: 1,
         title: 'Action Plan',
         scenario: 'I write an action plan for the first three months and send it to everyone. The plan contains ambitious goals, a detailed plan, and a description of who is to do what.\n\nI communicate this plan to the remote team members in our weekly, individual phone meetings.',
-        results: 'If you have established yourself as a leader, the team members benefit from your clear goals and plans. Team members with fair or strong TRUST get ALIGNMENT +1. However, people react differently to detailed planning. Some like the clarity it brings while others feel micro managed. Structured get AUTONOMY +1, but Flexible get AUTONOMY -1.'
+        results: 'If you have established yourself as a leader, the team members benefit from your clear goals and plans. However, people react differently to detailed planning. Some appreciate the clarity it brings, while others feel micro managed.\n\nTeam members with fair or strong TRUST get ALIGNMENT +1.\nStructured team members get AUTONOMY +1.\nFlexible team members get AUTONOMY -1.'
       },
       {
         id: 2,
