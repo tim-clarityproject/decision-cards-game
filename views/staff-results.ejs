@@ -299,13 +299,27 @@
             <% if (card.results) { %>
                 <%
                     // Extract score changes from results text
-                    const scoreRegex = /([\w\s,]+)\s+get\s+(TRUST|ALIGNMENT|AUTONOMY)\s+([\+\-]\d+)/g;
+                    const scoreRegex = /([\w\s,]+?)\s+get\s+(TRUST|ALIGNMENT|AUTONOMY)\s+([\+\-]\d+)/g;
                     const matches = [...card.results.matchAll(scoreRegex)];
                     let narrative = card.results;
                     matches.forEach(match => {
                         narrative = narrative.replace(match[0], '');
                     });
-                    narrative = narrative.replace(/\s+/g, ' ').trim();
+                    // Clean up narrative: remove ellipses, extra spaces, and line breaks
+                    narrative = narrative.replace(/\.{2,}/g, '.').replace(/\s+/g, ' ').replace(/\n+/g, ' ').trim();
+
+                    // Convert attribute names from CAPS to Title Case
+                    const attrNames = {
+                        'TRUST': 'Trust',
+                        'ALIGNMENT': 'Alignment',
+                        'AUTONOMY': 'Autonomy'
+                    };
+
+                    const colors = {
+                        'TRUST': '#E74C3C',
+                        'ALIGNMENT': '#3498DB',
+                        'AUTONOMY': '#2ECC71'
+                    };
                 %>
                 <p style="line-height: 1.8; margin-bottom: 25px;"><%= narrative %></p>
 
@@ -314,20 +328,18 @@
                         <h3 style="font-size: 1.1em; margin-bottom: 15px; color: #1A1A1A;">Score Changes:</h3>
                         <div style="display: grid; gap: 12px;">
                             <% matches.forEach(match => {
-                                const actor = match[1].trim();
+                                let actor = match[1].trim();
                                 const attr = match[2];
                                 const change = match[3];
                                 const isPositive = change.startsWith('+');
-                                const colors = {
-                                    'TRUST': '#E74C3C',
-                                    'ALIGNMENT': '#3498DB',
-                                    'AUTONOMY': '#2ECC71'
-                                };
+
+                                // Clean up actor text - remove leading punctuation and extra spaces
+                                actor = actor.replace(/^[,\s]+/, '').replace(/\s+/g, ' ').trim();
                             %>
                                 <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px; background: #f5f5f5; border-radius: 4px;">
-                                    <span style="min-width: 100px; font-size: 0.9em; color: #666;"><strong><%= actor %></strong></span>
+                                    <span style="min-width: 120px; font-size: 0.9em; color: #333;"><strong><%= actor %></strong></span>
                                     <span style="flex: 1; display: flex; gap: 8px; align-items: center;">
-                                        <span style="background: <%= colors[attr] %>; color: white; padding: 4px 10px; border-radius: 3px; font-size: 0.9em; font-weight: 600;"><%= attr %></span>
+                                        <span style="background: <%= colors[attr] %>; color: white; padding: 4px 10px; border-radius: 3px; font-size: 0.9em; font-weight: 600;"><%= attrNames[attr] %></span>
                                         <span style="font-size: 1.1em; font-weight: 700; color: <%= isPositive ? '#27AE60' : '#E74C3C' %>;"><%= change %></span>
                                     </span>
                                 </div>
