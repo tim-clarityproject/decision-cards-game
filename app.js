@@ -37,7 +37,7 @@ const cardsByRound = {
         id: 1,
         title: 'Action Plan',
         scenario: 'I write an action plan for the first three months and send it to everyone. The plan contains ambitious goals, a detailed plan, and a description of who is to do what.\n\nI communicate this plan to the remote team members in our weekly, individual phone meetings.',
-        results: 'If you have established yourself as a leader, the team members benefit from your clear goals and plans. However, people react differently to detailed planning. Some appreciate the clarity it brings, while others feel micro managed.\n\nTeam members with fair or strong Trust get Alignment +1.\nStructured team members get Autonomy +1.\nFlexible team members get Autonomy -1.'
+        results: 'If you have established yourself as a leader, the team members benefit from your clear goals and plans. However, people react differently to detailed planning. Some appreciate the clarity it brings, while others feel micro managed.\n\nTeam members with fair or strong trust get Alignment +1.\nStructured team members get Autonomy +1.\nFlexible team members get Autonomy -1.'
       },
       {
         id: 2,
@@ -49,7 +49,7 @@ const cardsByRound = {
         id: 3,
         title: 'Here\'s What We Will Do',
         scenario: 'I gather all the team members physically or virtually for a full day\'s meeting where I present my vision, goals and KPIs for our team.\n\nBy clarifying goals and plans I ensure that the team members have a shared point of departure, and feel that things are under control.\n\nPay one business trip if you choose to travel to meet in person.',
-        results: 'Presenting detailed plans is most effective if you have already created good working relationships. Team members with fair or strong Trust get Alignment +1. Some team members prefer such briefings to be in person, while others react to your authoritative approach to planning. Hierarchical get Trust +1. Consensual get Trust -1. If the meeting was not face-to-face, Relationship-oriented also get Trust -1.'
+        results: 'Presenting detailed plans is most effective if you have already created good working relationships. Team members with fair or strong trust get Alignment +1. Some team members prefer such briefings to be in person, while others react to your authoritative approach to planning. Hierarchical get Trust +1. Consensual get Trust -1. If the meeting was not face-to-face, Relationship-oriented also get Trust -1.'
       },
       {
         id: 4,
@@ -67,13 +67,13 @@ const cardsByRound = {
         id: 6,
         title: 'Stay in Touch',
         scenario: 'I check in with all the team members via virtual tools at least once a week. I do this to have a short chat about how things are going, to provide feedback, and to make sure people are okay.\n\nApart from the team member\'s well-being, I focus on establishing standards for our virtual communication and use of global tools.',
-        results: 'Your care for your team members and clear presence in their daily life is highly appreciated. It makes the remote employees feel a part of the team and that their efforts do not go unnoticed. All team members get Trust +1. Getting the team members to use virtual tools and adhere to global standards is easier if you have previously established a personal relationship. Team members with fair or strong Trust also get Alignment +1.'
+        results: 'Your care for your team members and clear presence in their daily life is highly appreciated. It makes the remote employees feel a part of the team and that their efforts do not go unnoticed. All team members get Trust +1. Getting the team members to use virtual tools and adhere to global standards is easier if you have previously established a personal relationship. Team members with fair or strong trust also get Alignment +1.'
       },
       {
         id: 7,
         title: 'Let\'s Figure It Out',
         scenario: 'I gather all or some of the team members for a physical or virtual workshop where we discuss the tasks at hand as well as how each individual team member can best contribute.\n\nI create an open and shared process with room for listening to the input of the team members.\n\nPay one business trip if you choose to travel to meet in person.\n\nChoose team members:',
-        results: 'Developing clarity around tasks and roles together creates ownership for those who are not annoyed by the open process. All team members, except those who are Hierarchical, get Autonomy +1. If the meeting was in person all get Trust +1. Outspoken team members who are not aligned can create uncertainty during an open process. If at least one Direct team member in the workshop has weak Alignment, all the other participants get Alignment -1.'
+        results: 'Developing clarity around tasks and roles together creates ownership for those who are not annoyed by the open process. All team members, except those who are Hierarchical, get Autonomy +1. If the meeting was in person all get Trust +1. Outspoken team members who are not aligned can create uncertainty during an open process. If at least one Direct team member in the workshop has weak alignment, all the other participants get Alignment -1.'
       },
       {
         id: 8,
@@ -91,19 +91,19 @@ const cardsByRound = {
         id: 10,
         title: 'This is Your Job',
         scenario: 'I carefully write job descriptions for all team members stating their personal responsibilities, goals and KPIs.\n\nI share the job descriptions with the whole team in order for everyone to understand how roles and responsibilities are defined among the team members.',
-        results: 'All team members who have understood the goals of the team appreciate the clear directions. Team members who have strong or fair Alignment get Autonomy +1. Some feel that you have truly stepped up as a leader, while others see your leadership approach as authoritarian and would have liked to be involved in designing their own job. Hierarchical get Trust +1. Consensual get Trust -1.'
+        results: 'All team members who have understood the goals of the team appreciate the clear directions. Team members who have strong or fair alignment get Autonomy +1. Some feel that you have truly stepped up as a leader, while others see your leadership approach as authoritarian and would have liked to be involved in designing their own job. Hierarchical get Trust +1. Consensual get Trust -1.'
       },
       {
         id: 11,
         title: 'Setting the Bar High',
         scenario: 'I focus on delivering quality on time. I do this via phone, email and web meetings.\n\nI frequently follow up on goals and results in order to make everyone aware of where my focus is right now. At the same time, I make sure to set an example by keeping my own deadlines.',
-        results: 'Your focus on delivering quality on time creates a greater awareness of what standards you require from the team. All team members get Alignment +1. Some team members also respond favorably to you setting the pace by example. On the other hand, team members who are insecure about their own role and responsibilities find the approach somewhat intimidating. Structured and Direct get an extra Alignment +1. Team members with weak Autonomy get Trust -1.'
+        results: 'Your focus on delivering quality on time creates a greater awareness of what standards you require from the team. All team members get Alignment +1. Some team members also respond favorably to you setting the pace by example. On the other hand, team members who are insecure about their own role and responsibilities find the approach somewhat intimidating. Structured and Direct get an extra Alignment +1. Team members with weak autonomy get Trust -1.'
       },
       {
         id: 12,
         title: 'Let\'s Talk About Your Job',
         scenario: 'I conduct physical or virtual meetings with all of the team members in order to discuss and develop their jobs.\n\nI do this to ensure that all team members feel committed to their new role and have an opportunity to shape their responsibilities.\n\nPay one business trip if you choose to meet in person.',
-        results: 'Being involved in designing their own job helps all team members understand their role - especially if they have a good grasp of the team goals. All team members get Autonomy +1. Team members with strong Alignment get an extra Autonomy +1. The team members also appreciate it if you took time to meet them in person. If the meeting was in person, all team members get Trust +1 and Relationship-oriented get an extra Trust +1.'
+        results: 'Being involved in designing their own job helps all team members understand their role - especially if they have a good grasp of the team goals. All team members get Autonomy +1. Team members with strong alignment get an extra Autonomy +1. The team members also appreciate it if you took time to meet them in person. If the meeting was in person, all team members get Trust +1 and Relationship-oriented get an extra Trust +1.'
       }
     ],
     stakeholder: [
@@ -145,13 +145,13 @@ const cardsByRound = {
         id: 2,
         title: 'Adapt Corporate Guidelines',
         scenario: 'Based on my interpretation of corporate guidelines, I develop and communicate a standardised reporting structure including a plan for weekly reports.\n\nWith this, I seek to make it easier for the team to build upon each other\'s work and for me to track progress.',
-        results: 'If the team members trust your interpretation of the guidelines, the format ensures that all reports adhere to corporate standards. Team members with strong or fair Trust get Alignment +1. Some team members appreciate that you take responsibility for corporate alignment, while others feel that the new format does not fit their work. Hierarchical get Trust +1 and Individualistic get Trust -1.'
+        results: 'If the team members trust your interpretation of the guidelines, the format ensures that all reports adhere to corporate standards. Team members with strong or fair trust get Alignment +1. Some team members appreciate that you take responsibility for corporate alignment, while others feel that the new format does not fit their work. Hierarchical get Trust +1 and Individualistic get Trust -1.'
       },
       {
         id: 3,
         title: 'Weekly Check-up',
         scenario: 'I arrange weekly video conference meetings and groupware reporting. The team is to use these to coordinate deliverables between themselves and track progress.\n\nIn the meetings I make it clear that the team members are free to manage their own time as long as they deliver results.',
-        results: 'This method ensures a high degree of autonomy and flexibility for well-aligned team members. Team members with fair or strong Alignment get Autonomy +1. Some team members in particular react well to this, while those who are uncertain about the direction you want them to work towards, feel that you give them too little guidance. Individualistic or Flexible get an extra Autonomy +1. Hierarchical and Structured with weak Alignment get Trust -1.'
+        results: 'This method ensures a high degree of autonomy and flexibility for well-aligned team members. Team members with fair or strong alignment get Autonomy +1. Some team members in particular react well to this, while those who are uncertain about the direction you want them to work towards, feel that you give them too little guidance. Individualistic or Flexible get an extra Autonomy +1. Hierarchical and Structured with weak alignment get Trust -1.'
       },
       {
         id: 4,
@@ -169,7 +169,7 @@ const cardsByRound = {
         id: 6,
         title: 'Pit Stop',
         scenario: 'I bring my entire team together for a workshop where we discuss progress so far, and specifically address issues related to collaboration and communication. We also discuss when it is OK to deviate from global standards.\n\nIn the workshop design, I try to accommodate different preferences by mixing group work, discussions and individual reflections.\n\nPay one business trip.',
-        results: 'For team members who are aware of corporate standards, the workshop is a welcome opportunity to improve communication and collaboration in their daily work. Team members with fair or strong Alignment get Autonomy +1. Some team members also appreciate your efforts toward accommodating different preferences. If a team member is Flexible, Individualistic, or Indirect they also get Trust +1.'
+        results: 'For team members who are aware of corporate standards, the workshop is a welcome opportunity to improve communication and collaboration in their daily work. Team members with fair or strong alignment get Autonomy +1. Some team members also appreciate your efforts toward accommodating different preferences. If a team member is Flexible, Individualistic, or Indirect they also get Trust +1.'
       },
       {
         id: 7,
@@ -187,7 +187,7 @@ const cardsByRound = {
         id: 9,
         title: 'Quick Results',
         scenario: 'For each business centre, I identify a few small projects with potential for creating quick results for the new client. I delegate control of these projects to the local teams.\n\nI do this to give the local teams momentum with some quick wins to show that their work is valuable.',
-        results: 'The team members are motivated by the quick results, but only those with a sufficient level of clarity of work procedures can fully transform this motivation into autonomous work. All team members get Trust +1. Team members with fair or strong Alignment also get Autonomy +1. Some of the regional managers disagree with your priorities and fear your focus on low hanging fruit will delay the analyses they depend on. Stakeholders with weak Alignment get Trust -1.'
+        results: 'The team members are motivated by the quick results, but only those with a sufficient level of clarity of work procedures can fully transform this motivation into autonomous work. All team members get Trust +1. Team members with fair or strong alignment also get Autonomy +1. Some of the regional managers disagree with your priorities and fear your focus on low hanging fruit will delay the analyses they depend on. Stakeholders with weak alignment get Trust -1.'
       },
       {
         id: 10,
@@ -219,13 +219,13 @@ const cardsByRound = {
         id: 2,
         title: 'I Just Called...',
         scenario: 'I arrange frequent but short follow-up calls with all stakeholders.\n\nI do this to make sure they are satisfied with our services and to ensure that local conflicts are handled before they become serious.',
-        results: 'The phone calls clear out a lot of uncertainties and help build a closer relationship between you and the stakeholders. All stakeholders get Trust +1. Once you have built good relations you can also talk constructively about the development of Global Analytics. Stakeholders with fair or strong Trust also get Alignment +1.'
+        results: 'The phone calls clear out a lot of uncertainties and help build a closer relationship between you and the stakeholders. All stakeholders get Trust +1. Once you have built good relations you can also talk constructively about the development of Global Analytics. Stakeholders with fair or strong trust also get Alignment +1.'
       },
       {
         id: 3,
         title: 'Here\'s My Plan',
         scenario: 'I meet with the people from Corporate who are responsible for our new customer. Together we make a plan for how to best address the client\'s needs at local level.\n\nI send this plan to one or more stakeholders and make clear to them what they can expect from my team, and what I expect from them in return.\n\nChoose stakeholder(s):',
-        results: 'Showing up with a plan made in accordance with global business objectives gives you the authority to create alignment in the different business centres. Stakeholders who know you well enough also appreciate the clear communication. Stakeholders with fair or strong Trust get Alignment +2. The rest only get Alignment +1. A few stakeholders find your one-way communication somewhat offensive. Consensual stakeholders get Trust -1.'
+        results: 'Showing up with a plan made in accordance with global business objectives gives you the authority to create alignment in the different business centres. Stakeholders who know you well enough also appreciate the clear communication. Stakeholders with fair or strong trust get Alignment +2. The rest only get Alignment +1. A few stakeholders find your one-way communication somewhat offensive. Consensual stakeholders get Trust -1.'
       },
       {
         id: 4,
@@ -247,19 +247,19 @@ const cardsByRound = {
         id: 2,
         title: 'One-on-One',
         scenario: 'I conduct personal meetings with all team members to make them understand the urgency and the need for an extra effort.\n\nI ask for input from each person and work with them to revise their KPIs.\n\nPay one business trip if you choose to meet in person.',
-        results: 'The team members get a better understanding of the company\'s current situation. All team members get Alignment +1. If you met in person all team members get Trust +1. Your approach gives some team members the space to contribute with specific ideas on how they can improve their daily tasks. Individualistic and Consensual team members as well as team members with weak Autonomy get Autonomy +1.'
+        results: 'The team members get a better understanding of the company\'s current situation. All team members get Alignment +1. If you met in person all team members get Trust +1. Your approach gives some team members the space to contribute with specific ideas on how they can improve their daily tasks. Individualistic and Consensual team members as well as team members with weak autonomy get Autonomy +1.'
       },
       {
         id: 3,
         title: 'Follow My Lead',
         scenario: 'I apply myself to delivering quality in compliance with company standards. I put in extra hours and make sure that everyone on the team is aware of my good example.\n\nI do this in the belief that the team will be inspired to follow my example.',
-        results: 'The team members who already see you as a leader get motivated by your efforts. By seeing what you do, they also get a clearer idea of what is required by company standards. All team members who are strong in Trust get Autonomy +1 and Alignment +1. On the other hand, those who have doubts about the aim of the team, or their own role in it, do not find inspiration in your eagerness. All team members who are weak in either Alignment or Autonomy get Trust -1.'
+        results: 'The team members who already see you as a leader get motivated by your efforts. By seeing what you do, they also get a clearer idea of what is required by company standards. All team members who are strong in trust get Autonomy +1 and Alignment +1. On the other hand, those who have doubts about the aim of the team, or their own role in it, do not find inspiration in your eagerness. All team members who are weak in either alignment or autonomy get Trust -1.'
       },
       {
         id: 4,
         title: 'Let\'s Celebrate',
         scenario: 'I gather all the team members for a surprise celebration of the work we do.\n\nIn my speech at the event I focus on the results we have already achieved as a team and highlight the high potential of the team if we continue along this path.\n\nPay one business trip.',
-        results: 'The celebration produces additional team spirit among those who acknowledge the team\'s achievements in handling the crisis. All team members with fair or strong Alignment get Trust +1.'
+        results: 'The celebration produces additional team spirit among those who acknowledge the team\'s achievements in handling the crisis. All team members with fair or strong alignment get Trust +1.'
       },
       {
         id: 5,
@@ -277,13 +277,13 @@ const cardsByRound = {
         id: 7,
         title: 'A Real Opportunity',
         scenario: 'I write a post for the company newsletter. In this I frame the situation as a real opportunity for the Global Analytics Team. I stress that quality issues can only be solved with centralised efforts like ours.\n\nI also present an ambitious plan for the future and what the organisation can do to capitalise on the current situation.',
-        results: 'Your visionary approach is generally well received, but the team members still need to be properly aligned to actually take advantage of the situation. All team members with fair or strong Trust get Alignment +1. Team members who are strong in Alignment get Autonomy +1. Some stakeholders see your action as opportunistic and in conflict with their local interests. Stakeholders who are only weak or fair in Alignment get Trust -1.'
+        results: 'Your visionary approach is generally well received, but the team members still need to be properly aligned to actually take advantage of the situation. All team members with fair or strong trust get Alignment +1. Team members who are strong in Alignment get Autonomy +1. Some stakeholders see your action as opportunistic and in conflict with their local interests. Stakeholders who are only weak or fair in alignment get Trust -1.'
       },
       {
         id: 8,
         title: 'Find a Way',
         scenario: 'I create a task-force consisting of two team members from different business centres who are charged with addressing the quality issues in a way they see fit.\n\nMeanwhile, I tell the rest of the team that they will have to put in extra work to cover for the two.\n\nChoose two team members from different business centres:',
-        results: 'The selected team members feel valued and do their best to deliver new ideas and plans. The members of the task force get Alignment +1 and Autonomy +1. Some team members feel stressed by the increased work load while others are demotivated because their individual performance numbers suffers. Of the team members who were not on the task force; those with weak Autonomy get Trust -1, while the Individualistic get Autonomy -1.'
+        results: 'The selected team members feel valued and do their best to deliver new ideas and plans. The members of the task force get Alignment +1 and Autonomy +1. Some team members feel stressed by the increased work load while others are demotivated because their individual performance numbers suffers. Of the team members who were not on the task force; those with weak autonomy get Trust -1, while the Individualistic get Autonomy -1.'
       },
       {
         id: 9,
@@ -307,7 +307,7 @@ const cardsByRound = {
         id: 12,
         title: 'What\'s in It for You?',
         scenario: 'I have meetings with select team members where I frame the current crisis as an opportunity for them to step up and show themselves as valuable performers for the company.\n\nI do this to motivate the team members to perform. Both for their own and the company\'s sake.\n\nPay one business trip if you choose to meet in person.\n\nChoose up to three team members.',
-        results: 'The team members are happy that you take an interest in them and their future opportunities. All team members with whom you met get Alignment +1. If the meeting was in person they also get Trust +1. However, they still need to be aware of corporate standards to elevate their performance. Chosen team members with strong Alignment get Autonomy +1.'
+        results: 'The team members are happy that you take an interest in them and their future opportunities. All team members with whom you met get Alignment +1. If the meeting was in person they also get Trust +1. However, they still need to be aware of corporate standards to elevate their performance. Chosen team members with strong alignment get Autonomy +1.'
       }
     ],
     stakeholder: [
