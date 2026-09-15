@@ -367,7 +367,7 @@ const requireAuth = (req, res, next) => {
 
 // FRONT PAGE ACCESS (no auth required)
 app.get('/access', (req, res) => {
-  res.render('access');
+  res.render('access', { error: null });
 });
 
 // FRONT PAGE ACCESS HANDLER
